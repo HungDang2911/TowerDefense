@@ -19,6 +19,7 @@ public class Main extends Application {
         final Canvas canvas = new Canvas(500, 500);
         final GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
 
+
 //        graphicsContext.drawImage(Assets.mountain, 0, 0);
 
         Game game = new Game(graphicsContext);
