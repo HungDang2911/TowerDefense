@@ -1,37 +1,31 @@
 package game;
 
+import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
 
-public class Game {
+public class Game extends AnimationTimer {
     private final GraphicsContext graphicsContext;
 
     GameField field;
 
     public Game(GraphicsContext graphicsContext) {
+        Assets.init();
         this.graphicsContext = graphicsContext;
-        this.field = new GameField(new GameStage("demo.txt"));
-    }
-
-
-    public void run() {
-        long lastTime = System.nanoTime();
-        double delta = 0;
-
-        while (true) {
-            long now = System.nanoTime();
-            delta += (now - lastTime) / Config.NANOSECONDS_PER_TICK;
-            if (delta >= 1) {
-                update();
-                render();
-            }
-        }
+//        this.field = new GameField(new GameStage("file:resource/Map/demo.txt"), graphicsContext);
+        this.field = new GameField(graphicsContext);
     }
 
     private void update() {
-
+        field.update();
     }
 
     private void render() {
+        field.render();
+    }
 
+    @Override
+    public void handle(long l) {
+        update();
+        render();
     }
 }

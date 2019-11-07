@@ -15,9 +15,13 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws Exception{
         final Canvas canvas = new Canvas(500, 500);
         final GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
+
+//        graphicsContext.drawImage(Assets.mountain, 0, 0);
+
+        Game game = new Game(graphicsContext);
 
         canvas.setFocusTraversable(true);
         graphicsContext.setFontSmoothingType(FontSmoothingType.LCD);

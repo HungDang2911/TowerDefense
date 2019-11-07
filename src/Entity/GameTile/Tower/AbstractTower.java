@@ -2,6 +2,7 @@ package Entity.GameTile.Tower;
 
 import Entity.AbstractEntity;
 import Entity.GameTile.GameTile;
+import javafx.scene.canvas.GraphicsContext;
 
 public class AbstractTower extends AbstractEntity implements GameTile {
 
@@ -13,7 +14,7 @@ public class AbstractTower extends AbstractEntity implements GameTile {
 
     }
 
-    public void render() {
+    public void render(GraphicsContext graphicsContext) {
 
     }
 }

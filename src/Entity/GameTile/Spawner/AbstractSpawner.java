@@ -2,6 +2,7 @@ package Entity.GameTile.Spawner;
 
 import Entity.AbstractEntity;
 import Entity.GameTile.GameTile;
+import javafx.scene.canvas.GraphicsContext;
 
 public class AbstractSpawner extends AbstractEntity implements GameTile{
     protected AbstractSpawner(double posX, double posY, double width, double height) {
@@ -14,7 +15,7 @@ public class AbstractSpawner extends AbstractEntity implements GameTile{
     }
 
     @Override
-    public void render() {
+    public void render(GraphicsContext graphicsContext) {
 
     }
 }

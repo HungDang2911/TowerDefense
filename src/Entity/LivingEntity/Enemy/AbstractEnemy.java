@@ -1,10 +1,11 @@
 package Entity.LivingEntity.Enemy;
 
-import Entity.AbstractEntity;
+import Entity.LivingEntity.AbstractLivingEntity;
 import Entity.LivingEntity.Bullet.AbstractBullet;
 import Entity.LivingEntity.LivingEntity;
+import javafx.scene.canvas.GraphicsContext;
 
-public abstract class AbstractEnemy extends AbstractEntity implements LivingEntity {
+public abstract class AbstractEnemy extends AbstractLivingEntity implements LivingEntity {
     private int hitpoint;
     private double speed;
     private int armor;
@@ -29,7 +30,7 @@ public abstract class AbstractEnemy extends AbstractEntity implements LivingEnti
     }
 
     @Override
-    public void render() {
+    public void render(GraphicsContext graphicsContext) {
 
     }
 

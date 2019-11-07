@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class GameStage {
-    private int width, height;
+    public int width, height;
     private List<GameTile> tiles;
 
     public GameStage(int width, int height, List<GameTile>tiles) {
@@ -45,8 +45,8 @@ public class GameStage {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 int value = scanner.nextInt();
-                if (value == 0) tiles.add(new Road(x, y));
-                if (value == 1) tiles.add(new Mountain( x, y));
+                if (value == 0) tiles.add(new Road(x * Config.TILE_SIZE, y * Config.TILE_SIZE));
+                if (value == 1) tiles.add(new Mountain(x * Config.TILE_SIZE, y * Config.TILE_SIZE));
             }
         }
     }

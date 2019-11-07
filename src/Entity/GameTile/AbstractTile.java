@@ -1,6 +1,7 @@
 package Entity.GameTile;
 
 import Entity.AbstractEntity;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public abstract class AbstractTile extends AbstractEntity implements GameTile{
@@ -18,7 +19,7 @@ public abstract class AbstractTile extends AbstractEntity implements GameTile{
     }
 
     @Override
-    public void render() {
-
+    public void render(GraphicsContext graphicsContext) {
+        graphicsContext.drawImage(texture, posX, posY);
     }
 }
