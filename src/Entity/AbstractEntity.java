@@ -3,8 +3,8 @@ package Entity;
 public abstract class AbstractEntity implements GameEntity {
     protected double posX;
     protected double posY;
-    private double width;
-    private double height;
+    protected double width;
+    protected double height;
 
     protected AbstractEntity (double posX, double posY, double width, double height) {
         this.posX = posX;

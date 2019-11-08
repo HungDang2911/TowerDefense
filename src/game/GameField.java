@@ -11,22 +11,17 @@ import java.util.List;
 public class GameField {
     private List<GameTile> tiles = new ArrayList<>();
     private List<LivingEntity> livingEntities = new ArrayList<>();
-    private int width;
-    private int height;
     private final GraphicsContext graphicsContext;
 
     //FOR DEBUG
-    public GameField(GraphicsContext graphicsContext) {
-        this.graphicsContext = graphicsContext;
-        this.tiles.add(new Mountain(10,10));
-    }
+//    public GameField(GraphicsContext graphicsContext) {
+//        this.graphicsContext = graphicsContext;
+//        this.tiles.add(new Mountain(10,10));
+//    }
 
     public GameField(GameStage gameStage, GraphicsContext graphicsContext) {
         this.tiles = List.copyOf(gameStage.getTiles());
         this.graphicsContext = graphicsContext;
-        this.width = gameStage.width;
-        this.height = gameStage.height;
-
     }
 
     public void update() {

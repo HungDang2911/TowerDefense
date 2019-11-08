@@ -3,28 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="3625c482-e472-499e-9338-de9b241e755a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/textures/Tiles/Mountain.png" beforeDir="false" afterPath="$PROJECT_DIR$/resource/textures/Tiles/Mountain.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/AbstractEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/AbstractEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/GameEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GameEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/GameTile/AbstractTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GameTile/AbstractTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/GameTile/GameTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GameTile/GameTile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/GameTile/Mountain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GameTile/Mountain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/GameTile/Road.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GameTile/Road.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/GameTile/Spawner/AbstractSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GameTile/Spawner/AbstractSpawner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/GameTile/Spawner/Spawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GameTile/Spawner/Spawner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/GameTile/Target.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GameTile/Target.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/GameTile/Tower/AbstractTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GameTile/Tower/AbstractTower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/LivingEntity/Bullet/AbstractBullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/Bullet/AbstractBullet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/LivingEntity/Enemy/AbstractEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/Enemy/AbstractEnemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/LivingEntity/LivingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/LivingEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Assets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Assets.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameStage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Player.java" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,6 +21,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectId" id="1THELUjjfvgpxQBhkFY3owsGRaD" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -70,6 +59,13 @@
     <configuration />
   </component>
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3625c482-e472-499e-9338-de9b241e755a" name="Default Changelist" comment="" />
+      <created>1573108572033</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573108572033</updated>
+    </task>
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -77,21 +73,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/game/Main.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

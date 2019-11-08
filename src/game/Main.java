@@ -1,5 +1,6 @@
 package game;
 
+import Entity.GameTile.Mountain;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -20,9 +21,14 @@ public class Main extends Application {
         final GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
 
 
-//        graphicsContext.drawImage(Assets.mountain, 0, 0);
+        Mountain mountain = new Mountain(0,0);
+        mountain.render(graphicsContext);
 
-        Game game = new Game(graphicsContext);
+
+//        Game game = new Game(graphicsContext);
+//        game.start();
+
+        GameStage gameStage = new GameStage("file:resource/Map/demo.txt");
 
         canvas.setFocusTraversable(true);
         graphicsContext.setFontSmoothingType(FontSmoothingType.LCD);

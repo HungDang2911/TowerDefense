@@ -11,15 +11,15 @@ public class Game extends AnimationTimer {
     public Game(GraphicsContext graphicsContext) {
         Assets.init();
         this.graphicsContext = graphicsContext;
-//        this.field = new GameField(new GameStage("file:resource/Map/demo.txt"), graphicsContext);
-        this.field = new GameField(graphicsContext);
+        this.field = new GameField(new GameStage("file:resource/Map/demo.txt"), graphicsContext);
+//        this.field = new GameField(graphicsContext);
     }
 
     private void update() {
         field.update();
     }
 
-    private void render() {
+    public void render() {
         field.render();
     }
 
