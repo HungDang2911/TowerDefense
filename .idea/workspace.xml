@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3625c482-e472-499e-9338-de9b241e755a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/AbstractEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/AbstractEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/GameTile/AbstractTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GameTile/AbstractTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/GameTile/Mountain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GameTile/Mountain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/GameTile/Road.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GameTile/Road.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameStage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Main.java" afterDir="false" />
     </list>

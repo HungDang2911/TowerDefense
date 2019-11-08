@@ -9,6 +9,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.FontSmoothingType;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.util.Scanner;
+
 public class Main extends Application {
 
     public static void main(String[] args) {
@@ -25,10 +28,9 @@ public class Main extends Application {
         mountain.render(graphicsContext);
 
 
-//        Game game = new Game(graphicsContext);
-//        game.start();
+        Game game = new Game(graphicsContext);
+        game.start();
 
-        GameStage gameStage = new GameStage("file:resource/Map/demo.txt");
 
         canvas.setFocusTraversable(true);
         graphicsContext.setFontSmoothingType(FontSmoothingType.LCD);

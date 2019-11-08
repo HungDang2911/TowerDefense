@@ -13,12 +13,6 @@ public class GameField {
     private List<LivingEntity> livingEntities = new ArrayList<>();
     private final GraphicsContext graphicsContext;
 
-    //FOR DEBUG
-//    public GameField(GraphicsContext graphicsContext) {
-//        this.graphicsContext = graphicsContext;
-//        this.tiles.add(new Mountain(10,10));
-//    }
-
     public GameField(GameStage gameStage, GraphicsContext graphicsContext) {
         this.tiles = List.copyOf(gameStage.getTiles());
         this.graphicsContext = graphicsContext;
