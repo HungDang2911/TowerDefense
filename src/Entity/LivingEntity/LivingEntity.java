@@ -2,6 +2,8 @@ package Entity.LivingEntity;
 
 import Entity.GameEntity;
 
-public interface LivingEntity extends GameEntity {
+import java.util.List;
+
+public interface LivingEntity <E> extends GameEntity {
     public boolean isDestroyed();
 }

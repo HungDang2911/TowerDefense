@@ -1,11 +1,14 @@
 package Entity.LivingEntity.Enemy;
 
+import Entity.GameTile.Road;
 import Entity.LivingEntity.AbstractLivingEntity;
 import Entity.LivingEntity.Bullet.AbstractBullet;
 import Entity.LivingEntity.LivingEntity;
 import javafx.scene.canvas.GraphicsContext;
 
-public abstract class AbstractEnemy extends AbstractLivingEntity implements LivingEntity {
+import java.util.List;
+
+public abstract class AbstractEnemy extends AbstractLivingEntity{
     private int hitpoint;
     private double speed;
     private int armor;
@@ -23,9 +26,12 @@ public abstract class AbstractEnemy extends AbstractLivingEntity implements Livi
         this.hitpoint -= (bullet.getDamage() - this.armor);
     }
 
-    @Override
-    public void update() {
+    public void update(List<Road> roads) {
         //Move the enemy
+
+    }
+
+    public void move() {
 
     }
 

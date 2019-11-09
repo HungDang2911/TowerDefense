@@ -12,12 +12,6 @@ public abstract class AbstractTile extends AbstractEntity implements GameTile{
         this.texture = texture;
     }
 
-
-    @Override
-    public void update() {
-
-    }
-
     @Override
     public void render(GraphicsContext graphicsContext) {
         graphicsContext.drawImage(texture, posX, posY);

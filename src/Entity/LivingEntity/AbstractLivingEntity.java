@@ -2,6 +2,8 @@ package Entity.LivingEntity;
 
 import Entity.AbstractEntity;
 
+import java.util.List;
+
 public abstract class AbstractLivingEntity extends AbstractEntity implements LivingEntity {
     protected boolean destroyed;
 
