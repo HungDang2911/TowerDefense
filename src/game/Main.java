@@ -20,17 +20,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        final Canvas canvas = new Canvas(500, 500);
+        final Canvas canvas = new Canvas(640, 640);
         final GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
-
-
-        Mountain mountain = new Mountain(0,0);
-        mountain.render(graphicsContext);
-
 
         Game game = new Game(graphicsContext);
         game.start();
-
 
         canvas.setFocusTraversable(true);
         graphicsContext.setFontSmoothingType(FontSmoothingType.LCD);

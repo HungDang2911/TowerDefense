@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameField {
-    private List<GameTile> tiles = new ArrayList<>();
+    private List<GameTile> tiles;
     private List<LivingEntity> livingEntities = new ArrayList<>();
     private final GraphicsContext graphicsContext;
 

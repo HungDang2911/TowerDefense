@@ -6,7 +6,6 @@ import Entity.GameTile.Road;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -24,7 +23,6 @@ public class GameStage {
 
     private void load(String path) throws FileNotFoundException {
         File map = new File(path);
-        System.out.println(map.getName());
 
         try (Scanner scanner = new Scanner(map)) {
             int width = scanner.nextInt();

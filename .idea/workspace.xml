@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3625c482-e472-499e-9338-de9b241e755a" name="Default Changelist" comment="" />
+    <list default="true" id="3625c482-e472-499e-9338-de9b241e755a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/game/GameField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TowerDefense/game/GameField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/game/GameStage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TowerDefense/game/GameStage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/game/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TowerDefense/game/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/Map/demo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/resource/Map/demo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/GameStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameStage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Main.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,6 +22,9 @@
   </component>
   <component name="ProjectId" id="1THELUjjfvgpxQBhkFY3owsGRaD" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Solution" />
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
