@@ -21,7 +21,7 @@ public abstract class AbstractLivingEntity extends AbstractEntity implements Liv
     }
 
     protected <T extends AbstractEntity> double getDistance(T target) {
-        return Math.sqrt(Math.pow(this.getPosX() - target.getPosX(), 2) + Math.pow(this.getPosX() - target.getPosX(), 2));
+        return Math.sqrt(Math.pow(this.posX - target.getPosX(), 2) + Math.pow(this.posY - target.getPosY(), 2));
     }
 
     public void render(GraphicsContext graphicsContext) {

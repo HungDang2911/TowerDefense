@@ -13,10 +13,4 @@ public class MachineGunTower extends AbstractTower{
     public void shoot(AbstractEnemy target) {
 
     }
-
-
-    @Override
-    public <T> void update(T t) {
-
-    }
 }
