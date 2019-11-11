@@ -2,39 +2,55 @@ package Entity.LivingEntity.Bullet;
 
 import Entity.LivingEntity.AbstractLivingEntity;
 import Entity.LivingEntity.Enemy.AbstractEnemy;
-import Entity.LivingEntity.LivingEntity;
+import game.Config;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 import java.util.List;
 
 public abstract class AbstractBullet extends AbstractLivingEntity{
     private int damage;
     private double speed;
+    private double deltaX;
+    private double deltaY;
     private AbstractEnemy target;
-    protected AbstractBullet(double posX, double posY, double width, double height, AbstractEnemy target) {
-        super(posX, posY, width, height);
-        this.target = target;
+
+
+    protected AbstractBullet(double posX, double posY, double width, double height, Image texture, int damage, double speed) {
+        super(posX, posY, width, height, texture);
     }
 
     public int getDamage() {
         return damage;
     }
 
-    private double getDistance(){
-        return Math.sqrt(Math.pow(this.getPosX() - target.getPosX(), 2) + Math.pow(this.getPosX() - target.getPosX(), 2));
-    }
     public void update(List<AbstractEnemy> enemies) {
-        this.setPosX(this.getPosX() + (target.getPosX() - this.getPosX()) * speed / getDistance());
-        this.setPosY(this.getPosY() + (target.getPosY() - this.getPosY()) * speed / getDistance());
+        if (isHit(enemies)) {
+            target.onHit(this.damage);
+            this.destroyed = true;
+        }
+        else {
+            this.posX += deltaX;
+            this.posY += deltaY;
+//            if (this.posX > Config.GAME_WIDTH || this.posX < 0 || this.posY > Config.GAME_HEIGHT || this.posY < 0) this.destroyed = true;
+        }
     }
+
+    public boolean isHit(List<AbstractEnemy> enemies) {
+        double minDistance = 999;
+        for (AbstractEnemy enemy:enemies) {
+            if (getDistance(enemy) >= 1 || getDistance(enemy) > minDistance) continue;
+            minDistance = getDistance(enemy);
+            this.target = enemy;
+            return true;
+        }
+        return false;
+    }
+
+
 
     @Override
     public void render(GraphicsContext graphicsContext) {
+    }
 
-    }
-    public boolean Hit(){
-        if(getDistance() < 0.5)
-            return true;
-        else return false;
-    }
 }

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameField {
-    private List<GameTile> tiles;
+    private GameTile[][] tiles;
     private List<Road> roads = new ArrayList<>();
     private List<AbstractEnemy> enemies = new ArrayList<>();
     private List<AbstractTower> towers = new ArrayList<>();
@@ -23,7 +23,7 @@ public class GameField {
     private final GraphicsContext graphicsContext;
 
     public GameField(GameStage gameStage, GraphicsContext graphicsContext) {
-        this.tiles = List.copyOf(gameStage.getTiles());
+        this.tiles = gameStage.getTiles();
         this.graphicsContext = graphicsContext;
     }
 
@@ -31,7 +31,8 @@ public class GameField {
     }
 
     public void render() {
-        for (GameTile element:tiles) element.render(graphicsContext);
+        for (int i = 0; i < tiles.length; i++)
+            for (int j = 0; j < tiles[0].length; j++) tiles[i][j].render(graphicsContext);
         for (LivingEntity element:enemies) element.render(graphicsContext);
         for (LivingEntity element:towers) element.render(graphicsContext);
         for (LivingEntity element:bullets) element.render(graphicsContext);

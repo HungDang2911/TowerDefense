@@ -2,37 +2,46 @@ package Entity.LivingEntity.Enemy;
 
 import Entity.GameTile.Road;
 import Entity.LivingEntity.AbstractLivingEntity;
-import Entity.LivingEntity.Bullet.AbstractBullet;
-import Entity.LivingEntity.LivingEntity;
+import game.Player;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 import java.util.List;
 
+
 public abstract class AbstractEnemy extends AbstractLivingEntity{
-    private int hitpoint;
+    private int hitPoint;
     private double speed;
     private int armor;
     private int reward;
+    private Road prevRoad;
 
-    public AbstractEnemy(double posX, double posY, double width, double height, int hitpoint, double speed, int armor, int reward) {
-        super(posX, posY, width, height);
-        this.hitpoint = hitpoint;
+
+    public AbstractEnemy(double posX, double posY, double width, double height, Image texture, int hitPoint, double speed, int armor, int reward) {
+        super(posX, posY, width, height, texture);
+        this.hitPoint = hitPoint;
         this.armor = armor;
         this.reward = reward;
         this.speed = speed;
     }
 
-    public void onHit(AbstractBullet bullet){
-        this.hitpoint -= (bullet.getDamage() - this.armor);
+
+    public void onHit(int damage){
+        this.hitPoint -= (damage - this.armor);
+        if (this.hitPoint < 0) {
+            destroyed = true;
+            Player.addMoney(this.reward);
+        }
     }
 
     public void update(List<Road> roads) {
-        //Move the enemy
-
+        for (Road road:roads) {
+            if (getDistance(road))
+        }
     }
 
-    public void move() {
-
+    private void move(Road road) {
+        this.posX += (road.getPosX()
     }
 
     @Override

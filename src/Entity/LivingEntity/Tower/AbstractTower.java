@@ -3,6 +3,7 @@ package Entity.LivingEntity.Tower;
 import Entity.LivingEntity.AbstractLivingEntity;
 import Entity.LivingEntity.Bullet.AbstractBullet;
 import Entity.LivingEntity.Enemy.AbstractEnemy;
+import javafx.scene.image.Image;
 
 import java.util.List;
 
@@ -11,31 +12,30 @@ public abstract class AbstractTower extends AbstractLivingEntity{
     private double range;
     private int damage;
     private AbstractEnemy target;
-    private boolean isTargetingEnemy;
+    private AbstractBullet bullet;
 
-    protected AbstractTower(double posX, double posY, double width, double height, double attackSpeed, double range, int damage) {
-        super(posX, posY, width, height);
+    protected AbstractTower(double posX, double posY, double width, double height, Image texture, double attackSpeed, double range, int damage) {
+        super(posX, posY, width, height, texture);
         this.attackSpeed = attackSpeed;
         this.range = range;
         this.damage = damage;
-        this.isTargetingEnemy = false;
-    }
-
-    private double getDistance(AbstractEnemy enemy) {
-        return Math.sqrt(Math.pow(this.getPosX() - enemy.getPosX(), 2) + Math.pow(this.getPosX() - enemy.getPosX(), 2));
     }
 
     public void update(List<AbstractEnemy> enemies) {
-        if (target == null) isTargetingEnemy = false;
-
-        if (this.isTargetingEnemy) 
+        //Choose target then shoot it
+        if (enemies.isEmpty()) return;
+        if (this.target != null) shoot(target);
         else {
             double minDistance = 99999;
+            AbstractEnemy closetEnemy = null;
             for (AbstractEnemy enemy:enemies) {
-                if(getDistance(enemy) < range) {}
+                if(getDistance(enemy) <= range) {
+                    closetEnemy = enemy;
+                }
             }
+            this.target = closetEnemy;
         }
     }
 
-    public abstract void shoot(AbstractBullet bullet, AbstractEnemy target);
+    public abstract void shoot(AbstractEnemy target);
 }

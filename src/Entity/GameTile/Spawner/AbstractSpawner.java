@@ -9,7 +9,6 @@ public class AbstractSpawner extends AbstractEntity implements GameTile{
         super(posX, posY, width, height);
     }
 
-    @Override
     public void update() {
 
     }

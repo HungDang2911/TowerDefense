@@ -2,16 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3625c482-e472-499e-9338-de9b241e755a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/Tower/AbstractTower.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/Bullet/MachineGunBullet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/Tower/MachineGunTower.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/GameEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GameEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/GameTile/AbstractTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GameTile/AbstractTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/GameTile/Tower/AbstractTower.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/Map/demo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/resource/Map/demo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/GameTile/Spawner/AbstractSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GameTile/Spawner/AbstractSpawner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/LivingEntity/AbstractLivingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/AbstractLivingEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/LivingEntity/Bullet/AbstractBullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/Bullet/AbstractBullet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/LivingEntity/Enemy/AbstractEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/Enemy/AbstractEnemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/LivingEntity/LivingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/LivingEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/LivingEntity/Tower/AbstractTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/Tower/AbstractTower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Assets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Assets.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/GameStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameStage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

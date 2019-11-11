@@ -20,7 +20,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        final Canvas canvas = new Canvas(640, 640);
+        final Canvas canvas = new Canvas(Config.GAME_HORIZONTAL_LENGTH, Config.GAME_VERTICAL_LENGTH);
         final GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
 
         Game game = new Game(graphicsContext);
