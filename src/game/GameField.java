@@ -20,22 +20,36 @@ public class GameField {
     private List<AbstractEnemy> enemies = new ArrayList<>();
     private List<AbstractTower> towers = new ArrayList<>();
     private List<AbstractBullet> bullets = new ArrayList<>();
-
+    //private List<List<Double>> coordinates = new ArrayList<>();
+    public static double[][] cocoordinates = new double[6][2];
     private final GraphicsContext graphicsContext;
 
     public GameField(GameStage gameStage, GraphicsContext graphicsContext) {
+
         this.tiles = gameStage.getTiles();
         this.graphicsContext = graphicsContext;
         for (GameTile tile:tiles) if (tile instanceof Road) roads.add((Road)tile);
-        this.enemies.add(new TestEnemy(32, 0, roads.get(0)));
+        this.enemies.add(new TestEnemy(Config.TILE_SIZE * 2, Config.TILE_SIZE * 15));
 
+        cocoordinates[0][0] = Config.TILE_SIZE * 2;
+        cocoordinates[0][1] = Config.TILE_SIZE * 3;
+        cocoordinates[1][0] = Config.TILE_SIZE * 8;
+        cocoordinates[1][1] = Config.TILE_SIZE * 3;
+        cocoordinates[2][0] = Config.TILE_SIZE * 8;
+        cocoordinates[2][1] = Config.TILE_SIZE * 14;
+        cocoordinates[3][0] = Config.TILE_SIZE * 13;
+        cocoordinates[3][1] = Config.TILE_SIZE * 14;
+        cocoordinates[4][0] = Config.TILE_SIZE * 13;
+        cocoordinates[4][1] = Config.TILE_SIZE * 1;
+        cocoordinates[5][0] = Config.TILE_SIZE * 19;
+        cocoordinates[5][1] = Config.TILE_SIZE * 1;
 
 //        enemies.get(0).move(roads.get(0));
 //        System.out.println(roads.get(0).getPosX() + " " + roads.get(0).getPosY());
     }
 
     public void update() {
-        for (AbstractEnemy element:enemies) element.update(roads);
+        for (AbstractEnemy element:enemies) element.update(cocoordinates);
     }
 
     public void render() {

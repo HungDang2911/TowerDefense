@@ -2,17 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3625c482-e472-499e-9338-de9b241e755a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/Enemy/TestEnemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TowerDefense.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/Entity/LivingEntity/Enemy/AbstractEnemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TowerDefense/Entity/LivingEntity/Enemy/AbstractEnemy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/Entity/LivingEntity/Enemy/TestEnemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TowerDefense/Entity/LivingEntity/Enemy/TestEnemy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/META-INF/TowerDefense.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/game/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TowerDefense/game/Config.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/game/GameField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TowerDefense/game/GameField.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/game/GameStage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TowerDefense/game/GameStage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/game/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TowerDefense/game/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resource/Map/demo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/resource/Map/demo.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/LivingEntity/AbstractLivingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/AbstractLivingEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/LivingEntity/Enemy/AbstractEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/Enemy/AbstractEnemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/LivingEntity/LivingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/LivingEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/LivingEntity/Tower/MachineGunTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/Tower/MachineGunTower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Assets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Assets.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/LivingEntity/Enemy/TestEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/Enemy/TestEnemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameField.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,7 +35,10 @@
   <component name="ProjectId" id="1THELUjjfvgpxQBhkFY3owsGRaD" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Solution" />
+    <property name="last_opened_file_path" value="D:/Dowload/javafx-sdk-11.0.2/lib" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
