@@ -29,11 +29,13 @@ public abstract class AbstractTower extends AbstractLivingEntity{
             double minDistance = 99999;
             AbstractEnemy closetEnemy = null;
             for (AbstractEnemy enemy:enemies) {
-                if(getDistance(enemy) <= range) {
+                if(getDistance(enemy) <= range && getDistance(enemy) < minDistance) {
                     closetEnemy = enemy;
+                    minDistance = getDistance(enemy);
                 }
             }
             this.target = closetEnemy;
+            shoot(target);
         }
     }
 
