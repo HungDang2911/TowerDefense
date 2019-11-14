@@ -8,6 +8,7 @@ import Entity.LivingEntity.Enemy.AbstractEnemy;
 import Entity.LivingEntity.Enemy.TestEnemy;
 import Entity.LivingEntity.LivingEntity;
 import Entity.LivingEntity.Tower.AbstractTower;
+import Entity.LivingEntity.Tower.MachineGunTower;
 import javafx.scene.canvas.GraphicsContext;
 
 
@@ -44,8 +45,6 @@ public class GameField {
         cocoordinates[5][0] = Config.TILE_SIZE * 19;
         cocoordinates[5][1] = Config.TILE_SIZE * 1;
 
-//        enemies.get(0).move(roads.get(0));
-//        System.out.println(roads.get(0).getPosX() + " " + roads.get(0).getPosY());
     }
 
     public void update() {

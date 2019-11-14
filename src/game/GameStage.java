@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 public class GameStage {
     private List<GameTile> tiles = new ArrayList<>();
+    private List<Road> corners = new ArrayList<>();
 
     public GameStage(String path) throws FileNotFoundException {
             load(path);
@@ -19,6 +20,10 @@ public class GameStage {
 
     public List<GameTile> getTiles() {
         return tiles;
+    }
+
+    public List<Road> getCorners() {
+        return corners;
     }
 
     private void load(String path) throws FileNotFoundException {
@@ -34,6 +39,11 @@ public class GameStage {
                     int value = scanner.nextInt();
                     if (value == 0) tiles.add(new Road(x * Config.TILE_SIZE, y * Config.TILE_SIZE));
                     if (value == 1) tiles.add(new Mountain(x * Config.TILE_SIZE, y * Config.TILE_SIZE));
+                    if (value == 2) {
+                        Road road = new Road(x * Config.TILE_SIZE, y * Config.TILE_SIZE);
+                        tiles.add(road);
+                        corners.add(road);
+                    }
                 }
             }
         }

@@ -15,7 +15,7 @@ public abstract class AbstractEnemy extends AbstractLivingEntity{
     private double speed;
     private int armor;
     private int reward;
-    private Road prevRoad, currentRoad, nextRoad;
+
     private int count;
 
     public AbstractEnemy(double posX, double posY, double width, double height, Image texture, int hitPoint, double speed, int armor, int reward) {
@@ -38,29 +38,16 @@ public abstract class AbstractEnemy extends AbstractLivingEntity{
     }
 
     public void update(double[][] a) {
-//        for (Road road:roads) {
-//            if (getDistance(road) <= (Config.TILE_SIZE + 1) && road != prevRoad && road != currentRoad) {
-//                this.move(road);
-//            }
-//
-//            if (getDistance(road) < 1) {
-//                this.prevRoad = currentRoad;
-//                currentRoad = road;
-//           }
-//        }
                 int i = this.count;
                 double distance = Math.sqrt(Math.pow(this.getPosX() - a[i][0], 2) + Math.pow(this.getPosY() - a[i][1], 2));
-                this.move(a[i][0], a[i][1]);
                 if (distance < 2) this.count ++;
+                this.move(a[i][0], a[i][1]);
     }
 
-    public void move(double tX, double tY) {
+    private void move(double tX, double tY) {
         double distance = Math.sqrt(Math.pow(this.getPosX() - tX,2) + Math.pow(this.getPosY() - tY, 2));
-        System.out.println(distance);
         posX += (tX - posX) * speed / distance;
         posY += (tY - posY) * speed / distance;
-        System.out.println(posX + " " + posY);
-        System.out.println(tX + " " + tY);
     }
 
     @Override

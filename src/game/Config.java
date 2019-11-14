@@ -9,4 +9,9 @@ public class Config {
     public static final int GAME_VERTICAL_LENGTH = 480;
 
 
+    //MACHINE GUN TOWER
+    public static final double MACHINE_GUN_ATTACK_SPEED = 0.5;
+    public static final int MACHINE_GUN_DAMAGE = 5;
+    public static final double MACHINE_GUN_RANGE = 10;
+
 }
