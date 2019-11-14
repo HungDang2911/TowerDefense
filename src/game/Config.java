@@ -14,4 +14,7 @@ public class Config {
     public static final int MACHINE_GUN_DAMAGE = 5;
     public static final double MACHINE_GUN_RANGE = 10;
 
+    public static final int MACHINE_GUN_BULLET_DAMAGE = 10;
+    public static final double MACHINE_GUN_BULLET_SPEED = 0.1;
+
 }

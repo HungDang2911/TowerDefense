@@ -16,8 +16,12 @@ public abstract class AbstractBullet extends AbstractLivingEntity{
     private AbstractEnemy target;
 
 
-    protected AbstractBullet(double posX, double posY, double width, double height, Image texture, int damage, double speed) {
-        super(posX, posY, width, height, texture);
+    protected AbstractBullet(double posX, double posY, Image texture, int damage, double speed, double deltaX, double deltaY) {
+        super(posX, posY, 1, 1, texture);
+        this.damage = damage;
+        this.speed = speed;
+        this.deltaX = deltaX;
+        this.deltaY = deltaY;
     }
 
     public int getDamage() {
@@ -25,6 +29,7 @@ public abstract class AbstractBullet extends AbstractLivingEntity{
     }
 
     public void update(List<AbstractEnemy> enemies) {
+        System.out.println("bullet updated");
         if (isHit(enemies)) {
             target.onHit(this.damage);
             this.destroyed = true;
@@ -32,25 +37,23 @@ public abstract class AbstractBullet extends AbstractLivingEntity{
         else {
             this.posX += deltaX;
             this.posY += deltaY;
-//            if (this.posX > Config.GAME_WIDTH || this.posX < 0 || this.posY > Config.GAME_HEIGHT || this.posY < 0) this.destroyed = true;
+            if (this.posX > Config.GAME_HORIZONTAL_LENGTH || this.posX < 0 || this.posY > Config.GAME_VERTICAL_LENGTH || this.posY < 0) this.destroyed = true;
         }
+
     }
 
     public boolean isHit(List<AbstractEnemy> enemies) {
         double minDistance = 999;
         for (AbstractEnemy enemy:enemies) {
-            if (getDistance(enemy) >= 1 || getDistance(enemy) > minDistance) continue;
+            if (getDistance(enemy) >= 7 || getDistance(enemy) > minDistance) {
+                System.out.println(getDistance(enemy));
+                continue;
+            }
             minDistance = getDistance(enemy);
             this.target = enemy;
             return true;
         }
         return false;
-    }
-
-
-
-    @Override
-    public void render(GraphicsContext graphicsContext) {
     }
 
 }

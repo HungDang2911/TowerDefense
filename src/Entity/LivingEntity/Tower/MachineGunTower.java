@@ -12,6 +12,7 @@ public class MachineGunTower extends AbstractTower{
 
     @Override
     public void shoot(AbstractEnemy target) {
-
+        double deltaX = target.getPosX() - this.posX;
+        double deltaY = target.getPosY() - this.posY;
     }
 }

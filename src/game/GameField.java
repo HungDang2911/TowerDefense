@@ -4,6 +4,7 @@ import Entity.GameTile.GameTile;
 import Entity.GameTile.Mountain;
 import Entity.GameTile.Road;
 import Entity.LivingEntity.Bullet.AbstractBullet;
+import Entity.LivingEntity.Bullet.MachineGunBullet;
 import Entity.LivingEntity.Enemy.AbstractEnemy;
 import Entity.LivingEntity.Enemy.TestEnemy;
 import Entity.LivingEntity.LivingEntity;
@@ -21,7 +22,6 @@ public class GameField {
     private List<AbstractEnemy> enemies = new ArrayList<>();
     private List<AbstractTower> towers = new ArrayList<>();
     private List<AbstractBullet> bullets = new ArrayList<>();
-    //private List<List<Double>> coordinates = new ArrayList<>();
     public static double[][] cocoordinates = new double[6][2];
     private final GraphicsContext graphicsContext;
 
@@ -30,7 +30,10 @@ public class GameField {
         this.tiles = gameStage.getTiles();
         this.graphicsContext = graphicsContext;
         for (GameTile tile:tiles) if (tile instanceof Road) roads.add((Road)tile);
+
+        //FOR DEBUGS
         this.enemies.add(new TestEnemy(Config.TILE_SIZE * 2, Config.TILE_SIZE * 15));
+        this.bullets.add(new MachineGunBullet(0,0, 0.11, 0.11));
 
         cocoordinates[0][0] = Config.TILE_SIZE * 2;
         cocoordinates[0][1] = Config.TILE_SIZE * 3;
@@ -48,7 +51,13 @@ public class GameField {
     }
 
     public void update() {
+        enemies.removeIf(element -> element.isDestroyed());
+        bullets.removeIf(element -> element.isDestroyed());
+        towers.removeIf(element -> element.isDestroyed());
+
         for (AbstractEnemy element:enemies) element.update(cocoordinates);
+        for (AbstractBullet element:bullets) element.update(enemies);
+        for (AbstractTower element:towers) element.update(enemies);
     }
 
     public void render() {
