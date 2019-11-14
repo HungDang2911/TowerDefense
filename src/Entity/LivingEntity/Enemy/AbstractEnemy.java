@@ -25,7 +25,8 @@ public abstract class AbstractEnemy extends AbstractLivingEntity{
         this.reward = reward;
         this.speed = speed;
         this.currentRoad = road;
-        this.prevRoad = this.currentRoad;
+        this.nextRoad = road;
+        this.prevRoad = road;
     }
 
 
@@ -39,18 +40,31 @@ public abstract class AbstractEnemy extends AbstractLivingEntity{
 
     public void update(List<Road> roads) {
         for (Road road:roads) {
-            if (getDistance(road) <= (Config.TILE_SIZE + 1) && road != prevRoad && road != currentRoad) {
-                this.move(road);
+            double currentX = posX;
+            double currentY = posY;
+            posX = Math.floor(posX);
+            posY = Math.floor(posY);
+
+            System.out.println(posX +" " + posY);
+
+            if (getDistance(road) == 32 && road != currentRoad && road != nextRoad && road != prevRoad) {
+                if (currentRoad == nextRoad) nextRoad = road;
+                else {
+                    prevRoad = currentRoad;
+                    currentRoad = nextRoad;
+                    nextRoad = road;
+                }
             }
-            if (getDistance(road) < 1) {
-                this.prevRoad = currentRoad;
-                currentRoad = road;
-            }
+
+            posX = currentX;
+            posY = currentY;
         }
+        move(nextRoad);
     }
 
-    public void move(Road road) {
+    private void move(Road road) {
         System.out.println(getDistance(road));
+        System.out.println(road.getPosX() + " " + road.getPosY());
         posX += (road.getPosX() - posX) * speed / getDistance(road);
         posY += (road.getPosX() - posY) * speed / getDistance(road);
         System.out.println(posX + " " + posY);
