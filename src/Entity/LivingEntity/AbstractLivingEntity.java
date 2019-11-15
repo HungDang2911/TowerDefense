@@ -5,7 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 
-public abstract class AbstractLivingEntity extends AbstractEntity implements LivingEntity {
+public abstract class AbstractLivingEntity extends AbstractEntity{
     protected boolean destroyed;
     protected Image texture;
 

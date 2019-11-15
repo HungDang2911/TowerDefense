@@ -29,7 +29,6 @@ public abstract class AbstractBullet extends AbstractLivingEntity{
     }
 
     public void update(List<AbstractEnemy> enemies) {
-        System.out.println("bullet updated");
         if (isHit(enemies)) {
             target.onHit(this.damage);
             this.destroyed = true;
@@ -45,8 +44,7 @@ public abstract class AbstractBullet extends AbstractLivingEntity{
     public boolean isHit(List<AbstractEnemy> enemies) {
         double minDistance = 999;
         for (AbstractEnemy enemy:enemies) {
-            if (getDistance(enemy) >= 7 || getDistance(enemy) > minDistance) {
-                System.out.println(getDistance(enemy));
+            if (getDistance(enemy) >= Config.TILE_SIZE * (double)(7/64) || getDistance(enemy) > minDistance) {
                 continue;
             }
             minDistance = getDistance(enemy);

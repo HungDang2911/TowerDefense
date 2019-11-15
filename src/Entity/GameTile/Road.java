@@ -1,10 +1,11 @@
 package Entity.GameTile;
 
 import game.Assets;
-import javafx.scene.canvas.GraphicsContext;
 
-public class Road extends AbstractTile implements GameTile{
-    public Road(double posX, double posY) {
+public class Road extends AbstractTile{
+    public Road(double posX, double posY, int directionForEnemy) {
         super(posX, posY, Assets.road);
+        this.directionForEnemy = directionForEnemy;
     }
+
 }

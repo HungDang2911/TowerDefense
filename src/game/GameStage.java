@@ -1,29 +1,23 @@
 package game;
 
-import Entity.GameTile.GameTile;
+import Entity.GameTile.AbstractTile;
 import Entity.GameTile.Mountain;
 import Entity.GameTile.Road;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class GameStage {
-    private List<GameTile> tiles = new ArrayList<>();
-    private List<Road> corners = new ArrayList<>();
+    private AbstractTile[][] tiles;
 
     public GameStage(String path) throws FileNotFoundException {
             load(path);
     }
 
-    public List<GameTile> getTiles() {
-        return tiles;
-    }
 
-    public List<Road> getCorners() {
-        return corners;
+    public AbstractTile[][] getTiles() {
+        return tiles;
     }
 
     private void load(String path) throws FileNotFoundException {
@@ -33,17 +27,13 @@ public class GameStage {
             int horizontalLength = scanner.nextInt();
             int verticalLength = scanner.nextInt();
 
+            this.tiles = new AbstractTile[verticalLength][horizontalLength];
 
             for (int y = 0; y < verticalLength; y++) {
                 for (int x = 0; x < horizontalLength; x++) {
                     int value = scanner.nextInt();
-                    if (value == 0) tiles.add(new Road(x * Config.TILE_SIZE, y * Config.TILE_SIZE));
-                    if (value == 1) tiles.add(new Mountain(x * Config.TILE_SIZE, y * Config.TILE_SIZE));
-                    if (value == 2) {
-                        Road road = new Road(x * Config.TILE_SIZE, y * Config.TILE_SIZE);
-                        tiles.add(road);
-                        corners.add(road);
-                    }
+                    if (value == 0) tiles[y][x] = new Mountain(x * Config.TILE_SIZE, y * Config.TILE_SIZE);
+                    if (value == 1 || value == 2 || value == 3 || value == 4 || value == 5) tiles[y][x] = new Road(x * Config.TILE_SIZE, y * Config.TILE_SIZE, value);
                 }
             }
         }

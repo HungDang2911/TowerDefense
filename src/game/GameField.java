@@ -1,13 +1,10 @@
 package game;
 
-import Entity.GameTile.GameTile;
-import Entity.GameTile.Mountain;
-import Entity.GameTile.Road;
+import Entity.GameTile.AbstractTile;
 import Entity.LivingEntity.Bullet.AbstractBullet;
 import Entity.LivingEntity.Bullet.MachineGunBullet;
 import Entity.LivingEntity.Enemy.AbstractEnemy;
 import Entity.LivingEntity.Enemy.TestEnemy;
-import Entity.LivingEntity.LivingEntity;
 import Entity.LivingEntity.Tower.AbstractTower;
 import Entity.LivingEntity.Tower.MachineGunTower;
 import javafx.scene.canvas.GraphicsContext;
@@ -17,37 +14,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameField {
-    private List<GameTile> tiles;
-    private List<Road> roads = new ArrayList<>();
+    private AbstractTile[][] tiles;
     private List<AbstractEnemy> enemies = new ArrayList<>();
     private List<AbstractTower> towers = new ArrayList<>();
     private List<AbstractBullet> bullets = new ArrayList<>();
-    public static double[][] cocoordinates = new double[6][2];
     private final GraphicsContext graphicsContext;
 
     public GameField(GameStage gameStage, GraphicsContext graphicsContext) {
 
         this.tiles = gameStage.getTiles();
         this.graphicsContext = graphicsContext;
-        for (GameTile tile:tiles) if (tile instanceof Road) roads.add((Road)tile);
 
         //FOR DEBUGS
-        this.enemies.add(new TestEnemy(Config.TILE_SIZE * 2, Config.TILE_SIZE * 15));
-        this.bullets.add(new MachineGunBullet(0,0, 0.11, 0.11));
-
-        cocoordinates[0][0] = Config.TILE_SIZE * 2;
-        cocoordinates[0][1] = Config.TILE_SIZE * 3;
-        cocoordinates[1][0] = Config.TILE_SIZE * 8;
-        cocoordinates[1][1] = Config.TILE_SIZE * 3;
-        cocoordinates[2][0] = Config.TILE_SIZE * 8;
-        cocoordinates[2][1] = Config.TILE_SIZE * 14;
-        cocoordinates[3][0] = Config.TILE_SIZE * 13;
-        cocoordinates[3][1] = Config.TILE_SIZE * 14;
-        cocoordinates[4][0] = Config.TILE_SIZE * 13;
-        cocoordinates[4][1] = Config.TILE_SIZE * 1;
-        cocoordinates[5][0] = Config.TILE_SIZE * 19;
-        cocoordinates[5][1] = Config.TILE_SIZE * 1;
-
+        this.enemies.add(new TestEnemy(Config.TILE_SIZE * 2, Config.TILE_SIZE * 14));
+//        this.bullets.add(new MachineGunBullet(0,0, 0.11, 0.11));
     }
 
     public void update() {
@@ -55,13 +35,15 @@ public class GameField {
         bullets.removeIf(element -> element.isDestroyed());
         towers.removeIf(element -> element.isDestroyed());
 
-        for (AbstractEnemy element:enemies) element.update(cocoordinates);
+        for (AbstractEnemy element:enemies) element.update(tiles);
         for (AbstractBullet element:bullets) element.update(enemies);
-        for (AbstractTower element:towers) element.update(enemies);
+//        for (AbstractTower element:towers) element.update(enemies);
     }
 
     public void render() {
-        for (GameTile element:tiles) element.render(graphicsContext);
+        for (int i = 0; i < tiles.length; i++)
+            for (int j = 0; j < tiles[0].length; j++)
+                tiles[i][j].render(graphicsContext);
         for (AbstractEnemy element:enemies) element.render(graphicsContext);
         for (AbstractTower element:towers) element.render(graphicsContext);
         for (AbstractBullet element:bullets) element.render(graphicsContext);

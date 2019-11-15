@@ -1,6 +1,5 @@
 package game;
 
-import Entity.GameTile.Mountain;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -8,9 +7,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.FontSmoothingType;
 import javafx.stage.Stage;
-
-import java.io.File;
-import java.util.Scanner;
 
 public class Main extends Application {
 

@@ -1,6 +1,6 @@
 package Entity;
 
-public abstract class AbstractEntity implements GameEntity {
+public abstract class AbstractEntity{
     protected double posX;
     protected double posY;
     protected double width;

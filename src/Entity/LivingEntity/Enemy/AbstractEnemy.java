@@ -1,22 +1,17 @@
 package Entity.LivingEntity.Enemy;
 
+import Entity.GameTile.AbstractTile;
 import Entity.GameTile.Road;
 import Entity.LivingEntity.AbstractLivingEntity;
-import game.Config;
 import game.Player;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-import java.util.List;
-
-
-public abstract class AbstractEnemy extends AbstractLivingEntity{
+public abstract class AbstractEnemy extends AbstractLivingEntity {
     private int hitPoint;
     private double speed;
     private int armor;
     private int reward;
-
-    private int count;
+    private AbstractTile nextRoad;
 
     public AbstractEnemy(double posX, double posY, double width, double height, Image texture, int hitPoint, double speed, int armor, int reward) {
         super(posX, posY, width, height, texture);
@@ -24,12 +19,10 @@ public abstract class AbstractEnemy extends AbstractLivingEntity{
         this.armor = armor;
         this.reward = reward;
         this.speed = speed;
-        this.count = 0;
-
     }
 
 
-    public void onHit(int damage){
+    public void onHit(int damage) {
         this.hitPoint -= (damage - this.armor);
         if (this.hitPoint < 0) {
             destroyed = true;
@@ -37,23 +30,23 @@ public abstract class AbstractEnemy extends AbstractLivingEntity{
         }
     }
 
-    public void update(double[][] a) {
-                int i = this.count;
-                double distance = Math.sqrt(Math.pow(this.getPosX() - a[i][0], 2) + Math.pow(this.getPosY() - a[i][1], 2));
-                if (distance < 2) this.count ++;
-                this.move(a[i][0], a[i][1]);
+    public void update(AbstractTile[][] tiles) {
+        int currentColumn = (int)(posX / 32);
+        int currentRow = (int)(posY / 32);
+
+        if (getDistance(tiles[currentRow][currentColumn]) < speed) {
+            if (tiles[currentRow][currentColumn].getDirectionForEnemy() == 1) nextRoad = tiles[currentRow - 1][currentColumn];
+            else if (tiles[currentRow][currentColumn].getDirectionForEnemy() == 2) nextRoad = tiles[currentRow][currentColumn + 1];
+            else if (tiles[currentRow][currentColumn].getDirectionForEnemy() == 3) nextRoad = tiles[currentRow + 1][currentColumn];
+            else if (tiles[currentRow][currentColumn].getDirectionForEnemy() == 4) nextRoad = tiles[currentRow][currentColumn - 1];
+        }
+        move(nextRoad);
     }
 
-    private void move(double tX, double tY) {
-        double distance = Math.sqrt(Math.pow(this.getPosX() - tX,2) + Math.pow(this.getPosY() - tY, 2));
-        posX += (tX - posX) * speed / distance;
-        posY += (tY - posY) * speed / distance;
+    private void move(AbstractTile target) {
+        double distance = getDistance(target);
+        posX += (target.getPosX() - posX) * speed / distance;
+        posY += (target.getPosY() - posY) * speed / distance;
     }
-
-    @Override
-    public void render(GraphicsContext graphicsContext) {
-        graphicsContext.drawImage(texture, posX, posY);
-    }
-
 
 }
