@@ -8,25 +8,30 @@ import javafx.scene.image.Image;
 import java.util.List;
 
 public abstract class AbstractTower extends AbstractLivingEntity{
-    private double attackSpeed;
-    private double range;
-    private int damage;
-    private AbstractEnemy target;
-    private AbstractBullet bullet;
+    protected int attackSpeed;
+    protected double range;
+    protected int damage;
+    protected AbstractEnemy target;
+    protected int ticks;
 
-    protected AbstractTower(double posX, double posY, double width, double height, Image texture, double attackSpeed, double range, int damage) {
-        super(posX, posY, width, height, texture);
+    protected AbstractTower(double posX, double posY, Image texture, int attackSpeed, double range, int damage) {
+        super(posX, posY, 1, 1, texture);
         this.attackSpeed = attackSpeed;
         this.range = range;
         this.damage = damage;
+        this.ticks = 0;
     }
 
-    public void update(List<AbstractEnemy> enemies) {
+    public void update(List<AbstractEnemy> enemies, List<AbstractBullet> bullets) {
+        if (ticks++ < attackSpeed) return;
+
         //Choose target then shoot it
         if (enemies.isEmpty()) return;
-        if (this.target != null) shoot(target);
+        if (this.target != null && getDistance(target) <= range) {
+            bullets.add(getBullet(posX, posY, target.getPosX(), target.getPosY()));
+        }
         else {
-            double minDistance = 99999;
+            double minDistance = 9999999D;
             AbstractEnemy closetEnemy = null;
             for (AbstractEnemy enemy:enemies) {
                 if(getDistance(enemy) <= range && getDistance(enemy) < minDistance) {
@@ -34,10 +39,14 @@ public abstract class AbstractTower extends AbstractLivingEntity{
                     minDistance = getDistance(enemy);
                 }
             }
-            this.target = closetEnemy;
-            shoot(target);
+            if (closetEnemy != null) {
+                this.target = closetEnemy;
+                bullets.add(getBullet(posX, posY, target.getPosX(), target.getPosY()));
+            }
         }
+        ticks = 0;
     }
 
-    public abstract void shoot(AbstractEnemy target);
+    protected abstract AbstractBullet getBullet(double posX, double posY, double x, double y);
+
 }

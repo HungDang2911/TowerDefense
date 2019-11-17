@@ -2,9 +2,8 @@ package game;
 
 import Entity.GameTile.AbstractTile;
 import Entity.LivingEntity.Bullet.AbstractBullet;
-import Entity.LivingEntity.Bullet.MachineGunBullet;
 import Entity.LivingEntity.Enemy.AbstractEnemy;
-import Entity.LivingEntity.Enemy.TestEnemy;
+import Entity.LivingEntity.Enemy.BossEnemy;
 import Entity.LivingEntity.Tower.AbstractTower;
 import Entity.LivingEntity.Tower.MachineGunTower;
 import javafx.scene.canvas.GraphicsContext;
@@ -26,8 +25,8 @@ public class GameField {
         this.graphicsContext = graphicsContext;
 
         //FOR DEBUGS
-        this.enemies.add(new TestEnemy(Config.TILE_SIZE * 2, Config.TILE_SIZE * 14));
-//        this.bullets.add(new MachineGunBullet(0,0, 0.11, 0.11));
+        this.enemies.add(new BossEnemy(Config.TILE_SIZE * 2, Config.TILE_SIZE * 14));
+
     }
 
     public void update() {
@@ -35,9 +34,10 @@ public class GameField {
         bullets.removeIf(element -> element.isDestroyed());
         towers.removeIf(element -> element.isDestroyed());
 
-        for (AbstractEnemy element:enemies) element.update(tiles);
         for (AbstractBullet element:bullets) element.update(enemies);
-//        for (AbstractTower element:towers) element.update(enemies);
+        for (AbstractEnemy element:enemies) element.update(tiles);
+        for (AbstractTower element:towers) element.update(enemies, bullets);
+
     }
 
     public void render() {

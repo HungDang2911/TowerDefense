@@ -3,6 +3,7 @@ package game;
 import Entity.GameTile.AbstractTile;
 import Entity.GameTile.Mountain;
 import Entity.GameTile.Road;
+import Entity.GameTile.Target;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -33,7 +34,8 @@ public class GameStage {
                 for (int x = 0; x < horizontalLength; x++) {
                     int value = scanner.nextInt();
                     if (value == 0) tiles[y][x] = new Mountain(x * Config.TILE_SIZE, y * Config.TILE_SIZE);
-                    if (value == 1 || value == 2 || value == 3 || value == 4 || value == 5) tiles[y][x] = new Road(x * Config.TILE_SIZE, y * Config.TILE_SIZE, value);
+                    if (value == 1 || value == 2 || value == 3 || value == 4) tiles[y][x] = new Road(x * Config.TILE_SIZE, y * Config.TILE_SIZE, value);
+                    if (value == 5) tiles[y][x] = new Target(x * Config.TILE_SIZE, y * Config.TILE_SIZE, value);
                 }
             }
         }

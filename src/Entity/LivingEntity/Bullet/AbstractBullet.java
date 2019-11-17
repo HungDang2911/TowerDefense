@@ -9,19 +9,22 @@ import javafx.scene.image.Image;
 import java.util.List;
 
 public abstract class AbstractBullet extends AbstractLivingEntity{
-    private int damage;
-    private double speed;
-    private double deltaX;
-    private double deltaY;
-    private AbstractEnemy target;
+    protected int damage;
+    protected double speed;
+    protected double deltaX;
+    protected double deltaY;
+    protected AbstractEnemy target;
 
 
-    protected AbstractBullet(double posX, double posY, Image texture, int damage, double speed, double deltaX, double deltaY) {
+    protected AbstractBullet(double posX, double posY, Image texture, int damage, double speed, double x, double y) {
         super(posX, posY, 1, 1, texture);
         this.damage = damage;
         this.speed = speed;
-        this.deltaX = deltaX;
-        this.deltaY = deltaY;
+        {
+            double distance = Math.sqrt((posX - x) * (posX - x) + (posY - y) * (posY - y));
+            deltaX = (x - posX) * speed / distance;
+            deltaY = (y - posY) * speed / distance;
+        }
     }
 
     public int getDamage() {
@@ -42,11 +45,13 @@ public abstract class AbstractBullet extends AbstractLivingEntity{
     }
 
     public boolean isHit(List<AbstractEnemy> enemies) {
-        double minDistance = 999;
+        double minDistance = 999999D;
         for (AbstractEnemy enemy:enemies) {
-            if (getDistance(enemy) >= Config.TILE_SIZE * (double)(7/64) || getDistance(enemy) > minDistance) {
+            if (getDistance(enemy) >= (double)Config.TILE_SIZE * 32/64 || getDistance(enemy) > minDistance) {
+                System.out.println("continued");
                 continue;
             }
+            System.out.println("boom");
             minDistance = getDistance(enemy);
             this.target = enemy;
             return true;

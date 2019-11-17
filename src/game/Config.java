@@ -2,19 +2,41 @@ package game;
 
 public class Config {
     public static final String GAME_NAME = "Tower Defense";
-//    public static final double TICKS_PER_SECOND = 30D;
-//    public static final double NANOSECONDS_PER_TICK = 1000000000 / TICKS_PER_SECOND;
-    public static final int TILE_SIZE = 32;
-    public static final int GAME_HORIZONTAL_LENGTH = 640;
-    public static final int GAME_VERTICAL_LENGTH = 480;
+    public static final int TILE_SIZE = 64;
+    public static final int GAME_HORIZONTAL_LENGTH = 1280;
+    public static final int GAME_VERTICAL_LENGTH = 960;
 
+
+    /** ***************************TOWERS***************************** **/
 
     //MACHINE GUN TOWER
-    public static final double MACHINE_GUN_ATTACK_SPEED = 0.5;
-    public static final int MACHINE_GUN_DAMAGE = 5;
-    public static final double MACHINE_GUN_RANGE = 10;
+    public static final int MACHINE_GUN_ATTACK_SPEED = 60;
+    public static final int MACHINE_GUN_DAMAGE = 50;
+    public static final double MACHINE_GUN_RANGE = 200;
+    public static final double MACHINE_GUN_BULLET_SPEED = 10;
 
-    public static final int MACHINE_GUN_BULLET_DAMAGE = 10;
-    public static final double MACHINE_GUN_BULLET_SPEED = 0.1;
+    /** ***************************ENEMIES***************************** **/
+    //NORMAL ENEMY
+    public static final int NORMAL_ENEMY_HITPOINT = 0;
+    public static final int NORMAL_ENEMY_SPEED = 0;
+    public static final int NORMAL_ENEMY_ARMOR = 0;
+    public static final int NORMAL_ENEMY_REWARD = 0;
 
+    //FAST ENEMY
+    public static final int FAST_ENEMY_HITPOINT = 0;
+    public static final int FAST_ENEMY_SPEED = 0;
+    public static final int FAST_ENEMY_ARMOR = 0;
+    public static final int FAST_ENEMY_REWARD = 0;
+
+    //TANKER ENEMY
+    public static final int TANKER_ENEMY_HITPOINT = 0;
+    public static final int TANKER_ENEMY_SPEED = 0;
+    public static final int TANKER_ENEMY_ARMOR = 0;
+    public static final int TANKER_ENEMY_REWARD = 0;
+
+    //BOSS ENEMY
+    public static final int BOSS_ENEMY_HITPOINT = 0;
+    public static final int BOSS_ENEMY_SPEED = 0;
+    public static final int BOSS_ENEMY_ARMOR = 0;
+    public static final int BOSS_ENEMY_REWARD = 0;
 }

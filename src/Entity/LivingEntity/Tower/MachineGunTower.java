@@ -1,18 +1,18 @@
 package Entity.LivingEntity.Tower;
 
-import Entity.LivingEntity.Enemy.AbstractEnemy;
+import Entity.LivingEntity.Bullet.AbstractBullet;
+import Entity.LivingEntity.Bullet.MachineGunBullet;
+import game.Assets;
 import game.Config;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 
 public class MachineGunTower extends AbstractTower{
-    protected MachineGunTower(double posX, double posY, double width, double height, Image texture, double attackSpeed, double range, int damage) {
-        super(posX, posY, width, height, texture, Config.MACHINE_GUN_ATTACK_SPEED, Config.MACHINE_GUN_RANGE, Config.MACHINE_GUN_DAMAGE);
+    public MachineGunTower(double posX, double posY) {
+        super(posX, posY, Assets.machineGunTower, Config.MACHINE_GUN_ATTACK_SPEED, Config.MACHINE_GUN_RANGE, Config.MACHINE_GUN_DAMAGE);
     }
 
     @Override
-    public void shoot(AbstractEnemy target) {
-        double deltaX = target.getPosX() - this.posX;
-        double deltaY = target.getPosY() - this.posY;
+    public AbstractBullet getBullet(double posX, double posY, double x, double y) {
+        return new MachineGunBullet(posX, posY, this.damage, x, y);
     }
+
 }
