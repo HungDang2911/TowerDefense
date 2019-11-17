@@ -47,11 +47,7 @@ public abstract class AbstractBullet extends AbstractLivingEntity{
     public boolean isHit(List<AbstractEnemy> enemies) {
         double minDistance = 999999D;
         for (AbstractEnemy enemy:enemies) {
-            if (getDistance(enemy) >= (double)Config.TILE_SIZE * 32/64 || getDistance(enemy) > minDistance) {
-                System.out.println("continued");
-                continue;
-            }
-            System.out.println("boom");
+            if (getDistance(enemy) >= (double)Config.TILE_SIZE * 32/64 || getDistance(enemy) > minDistance) continue;
             minDistance = getDistance(enemy);
             this.target = enemy;
             return true;

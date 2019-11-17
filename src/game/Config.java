@@ -11,32 +11,32 @@ public class Config {
 
     //MACHINE GUN TOWER
     public static final int MACHINE_GUN_ATTACK_SPEED = 60;
-    public static final int MACHINE_GUN_DAMAGE = 50;
-    public static final double MACHINE_GUN_RANGE = 200;
+    public static final int MACHINE_GUN_DAMAGE = 20;
+    public static final double MACHINE_GUN_RANGE = TILE_SIZE * 3.5;
     public static final double MACHINE_GUN_BULLET_SPEED = 10;
 
     /** ***************************ENEMIES***************************** **/
     //NORMAL ENEMY
-    public static final int NORMAL_ENEMY_HITPOINT = 0;
-    public static final int NORMAL_ENEMY_SPEED = 0;
-    public static final int NORMAL_ENEMY_ARMOR = 0;
+    public static final int NORMAL_ENEMY_HITPOINTS = 60;
+    public static final double NORMAL_ENEMY_SPEED = 0.7;
+    public static final int NORMAL_ENEMY_ARMOR = 5;
     public static final int NORMAL_ENEMY_REWARD = 0;
 
     //FAST ENEMY
-    public static final int FAST_ENEMY_HITPOINT = 0;
-    public static final int FAST_ENEMY_SPEED = 0;
+    public static final int FAST_ENEMY_HITPOINTS = 40;
+    public static final double FAST_ENEMY_SPEED= 1;
     public static final int FAST_ENEMY_ARMOR = 0;
-    public static final int FAST_ENEMY_REWARD = 0;
+    public static final int FAST_ENEMY_REWARD = 1;
 
     //TANKER ENEMY
-    public static final int TANKER_ENEMY_HITPOINT = 0;
-    public static final int TANKER_ENEMY_SPEED = 0;
+    public static final int TANKER_ENEMY_HITPOINTS = 0;
+    public static final double TANKER_ENEMY_SPEED = 0;
     public static final int TANKER_ENEMY_ARMOR = 0;
     public static final int TANKER_ENEMY_REWARD = 0;
 
     //BOSS ENEMY
-    public static final int BOSS_ENEMY_HITPOINT = 0;
-    public static final int BOSS_ENEMY_SPEED = 0;
-    public static final int BOSS_ENEMY_ARMOR = 0;
-    public static final int BOSS_ENEMY_REWARD = 0;
+    public static final int BOSS_ENEMY_HITPOINTS = 500;
+    public static final double BOSS_ENEMY_SPEED = 0.2;
+    public static final int BOSS_ENEMY_ARMOR = 50;
+    public static final int BOSS_ENEMY_REWARD = 100;
 }

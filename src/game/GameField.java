@@ -4,6 +4,7 @@ import Entity.GameTile.AbstractTile;
 import Entity.LivingEntity.Bullet.AbstractBullet;
 import Entity.LivingEntity.Enemy.AbstractEnemy;
 import Entity.LivingEntity.Enemy.BossEnemy;
+import Entity.LivingEntity.Enemy.FastEnemy;
 import Entity.LivingEntity.Tower.AbstractTower;
 import Entity.LivingEntity.Tower.MachineGunTower;
 import javafx.scene.canvas.GraphicsContext;
@@ -25,7 +26,8 @@ public class GameField {
         this.graphicsContext = graphicsContext;
 
         //FOR DEBUGS
-        this.enemies.add(new BossEnemy(Config.TILE_SIZE * 2, Config.TILE_SIZE * 14));
+        this.towers.add(new MachineGunTower(Config.TILE_SIZE * 5, Config.TILE_SIZE * 5));
+        this.enemies.add(new FastEnemy(Config.TILE_SIZE * 2, Config.TILE_SIZE * 14));
 
     }
 

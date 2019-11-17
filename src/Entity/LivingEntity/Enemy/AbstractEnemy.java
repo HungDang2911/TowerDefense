@@ -1,21 +1,22 @@
 package Entity.LivingEntity.Enemy;
 
 import Entity.GameTile.AbstractTile;
+import Entity.GameTile.Target;
 import Entity.LivingEntity.AbstractLivingEntity;
 import game.Config;
 import game.Player;
 import javafx.scene.image.Image;
 
 public abstract class AbstractEnemy extends AbstractLivingEntity {
-    private int hitPoint;
+    private int hitPoints;
     private double speed;
     private int armor;
     private int reward;
     private AbstractTile nextRoad;
 
-    public AbstractEnemy(double posX, double posY, Image texture, int hitPoint, double speed, int armor, int reward) {
+    public AbstractEnemy(double posX, double posY, Image texture, int hitPoints, double speed, int armor, int reward) {
         super(posX, posY, 1, 1, texture);
-        this.hitPoint = hitPoint;
+        this.hitPoints = hitPoints;
         this.armor = armor;
         this.reward = reward;
         this.speed = speed;
@@ -23,11 +24,15 @@ public abstract class AbstractEnemy extends AbstractLivingEntity {
 
 
     public void onHit(int damage) {
-        this.hitPoint -= (damage - this.armor);
-        if (this.hitPoint <= 0) {
+        this.hitPoints -= (damage - this.armor);
+        if (this.hitPoints <= 0) {
             destroyed = true;
             Player.addMoney(this.reward);
         }
+    }
+
+    private boolean isOnTarget(AbstractTile tile) {
+        return posX == tile.getPosX() && posY == tile.getPosY() && tile instanceof Target;
     }
 
     public void update(AbstractTile[][] tiles) {
@@ -41,6 +46,11 @@ public abstract class AbstractEnemy extends AbstractLivingEntity {
             else if (tiles[currentRow][currentColumn].getDirectionForEnemy() == 4) nextRoad = tiles[currentRow][currentColumn - 1];
         }
         move(nextRoad);
+
+        if (isOnTarget(tiles[(int)(posY / Config.TILE_SIZE)][(int)(posX / Config.TILE_SIZE)])) {
+            Player.decreaseLife();
+            this.destroyed = true;
+        }
     }
 
     private void move(AbstractTile target) {
