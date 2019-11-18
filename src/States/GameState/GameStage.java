@@ -1,9 +1,10 @@
-package game;
+package States.GameState;
 
 import Entity.GameTile.AbstractTile;
 import Entity.GameTile.Mountain;
 import Entity.GameTile.Road;
 import Entity.GameTile.Target;
+import Main.Config;
 
 import java.io.File;
 import java.io.FileNotFoundException;

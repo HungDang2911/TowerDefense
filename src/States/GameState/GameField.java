@@ -1,12 +1,12 @@
-package game;
+package States.GameState;
 
 import Entity.GameTile.AbstractTile;
 import Entity.LivingEntity.Bullet.AbstractBullet;
 import Entity.LivingEntity.Enemy.AbstractEnemy;
-import Entity.LivingEntity.Enemy.BossEnemy;
 import Entity.LivingEntity.Enemy.FastEnemy;
 import Entity.LivingEntity.Tower.AbstractTower;
 import Entity.LivingEntity.Tower.MachineGunTower;
+import Main.Config;
 import javafx.scene.canvas.GraphicsContext;
 
 

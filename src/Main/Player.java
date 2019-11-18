@@ -1,4 +1,4 @@
-package game;
+package Main;
 
 public class Player {
 
@@ -22,5 +22,9 @@ public class Player {
 
     public static long getMoney() {
         return money;
+    }
+
+    public static void render() {
+
     }
 }

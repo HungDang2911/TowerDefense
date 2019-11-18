@@ -2,8 +2,7 @@ package Entity.LivingEntity.Bullet;
 
 import Entity.LivingEntity.AbstractLivingEntity;
 import Entity.LivingEntity.Enemy.AbstractEnemy;
-import game.Config;
-import javafx.scene.canvas.GraphicsContext;
+import Main.Config;
 import javafx.scene.image.Image;
 
 import java.util.List;

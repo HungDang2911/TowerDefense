@@ -2,8 +2,8 @@ package Entity.LivingEntity.Tower;
 
 import Entity.LivingEntity.Bullet.AbstractBullet;
 import Entity.LivingEntity.Bullet.MachineGunBullet;
-import game.Assets;
-import game.Config;
+import Main.Assets;
+import Main.Config;
 
 public class MachineGunTower extends AbstractTower{
     public MachineGunTower(double posX, double posY) {

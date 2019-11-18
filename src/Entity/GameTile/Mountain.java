@@ -1,7 +1,6 @@
 package Entity.GameTile;
 
-import game.Assets;
-import javafx.scene.canvas.GraphicsContext;
+import Main.Assets;
 
 public class Mountain extends AbstractTile{
     public Mountain(double posX, double posY) {

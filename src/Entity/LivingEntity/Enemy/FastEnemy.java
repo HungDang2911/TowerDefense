@@ -1,8 +1,7 @@
 package Entity.LivingEntity.Enemy;
 
-import game.Assets;
-import game.Config;
-import javafx.scene.image.Image;
+import Main.Assets;
+import Main.Config;
 
 public class FastEnemy extends AbstractEnemy{
     public FastEnemy(double posX, double posY) {

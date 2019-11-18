@@ -3,8 +3,8 @@ package Entity.LivingEntity.Enemy;
 import Entity.GameTile.AbstractTile;
 import Entity.GameTile.Target;
 import Entity.LivingEntity.AbstractLivingEntity;
-import game.Config;
-import game.Player;
+import Main.Config;
+import Main.Player;
 import javafx.scene.image.Image;
 
 public abstract class AbstractEnemy extends AbstractLivingEntity {

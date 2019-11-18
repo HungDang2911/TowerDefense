@@ -1,7 +1,7 @@
 package Entity.LivingEntity.Enemy;
 
-import game.Assets;
-import game.Config;
+import Main.Assets;
+import Main.Config;
 
 public class TankerEnemy extends AbstractEnemy {
     public TankerEnemy(double posX, double posY) {
