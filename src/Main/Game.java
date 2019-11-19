@@ -6,33 +6,33 @@ import States.MenuState.Menu;
 import States.State;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.Pane;
 
 import java.io.FileNotFoundException;
 import java.util.Stack;
 
 public class Game extends AnimationTimer {
     private final GraphicsContext graphicsContext;
-    private Pane pane;
 
-    Stack<State> states = new Stack<>();
+    Stack<State> states;
 
     GameField field;
 
-    public Game(GraphicsContext graphicsContext, Pane pane) throws FileNotFoundException {
-        this.graphicsContext = graphicsContext;
-        this.pane = pane;
+    public Game(GraphicsContext graphicsContext) throws FileNotFoundException {
         Assets.init();
-        states.add(new Menu(pane, graphicsContext, states));
-//        states.add(new GameField(pane, new GameStage("resource/Map/demo.txt"), graphicsContext));
+        this.graphicsContext = graphicsContext;
+        this.field = new GameField(new GameStage("resource/Map/demo.txt"), graphicsContext);
+    }
+
+    public void initStates() {
+        this.states.push(new Menu());
     }
 
     private void update() {
-        this.states.peek().update();
+        field.update();
     }
 
     public void render() {
-        this.states.peek().render();
+        field.render();
     }
 
     @Override
