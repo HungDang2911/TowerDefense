@@ -8,9 +8,6 @@ import Entity.LivingEntity.Tower.AbstractTower;
 import Entity.LivingEntity.Tower.MachineGunTower;
 import Main.Config;
 import States.State;
-import javafx.scene.Scene;
-import javafx.scene.canvas.GraphicsContext;
-
 
 import java.util.ArrayList;
 import java.util.List;

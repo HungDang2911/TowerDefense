@@ -39,6 +39,7 @@ public class GameStage {
                     if (value == 5) tiles[y][x] = new Target(x * Config.TILE_SIZE, y * Config.TILE_SIZE, value);
                 }
             }
+
         }
 
     }

@@ -22,7 +22,6 @@ public class MainMenu extends State {
     @Override
     protected void initBackground() {
         this.background = Assets.mainMenuBackground;
-        System.out.println(background.getHeight());
     }
 
 

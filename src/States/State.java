@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.FontSmoothingType;
 
 import java.util.Stack;
 
@@ -33,7 +34,9 @@ public abstract class State {
 
     protected void initCanvas() {
         canvas = new Canvas(Config.GAME_HORIZONTAL_LENGTH, Config.GAME_VERTICAL_LENGTH);
+        canvas.setFocusTraversable(true);
         graphicsContext = canvas.getGraphicsContext2D();
+        graphicsContext.setFontSmoothingType(FontSmoothingType.LCD);
     }
 
 
