@@ -7,29 +7,41 @@ import Entity.LivingEntity.Enemy.FastEnemy;
 import Entity.LivingEntity.Tower.AbstractTower;
 import Entity.LivingEntity.Tower.MachineGunTower;
 import Main.Config;
+import States.State;
+import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
-public class GameField {
+public class GameField extends State{
     private AbstractTile[][] tiles;
     private List<AbstractEnemy> enemies = new ArrayList<>();
     private List<AbstractTower> towers = new ArrayList<>();
     private List<AbstractBullet> bullets = new ArrayList<>();
-    private final GraphicsContext graphicsContext;
 
-    public GameField(GameStage gameStage, GraphicsContext graphicsContext) {
+    public GameField(GameStage gameStage, Stack<State> states) {
+        super(states);
 
         this.tiles = gameStage.getTiles();
-        this.graphicsContext = graphicsContext;
+
 
         //FOR DEBUGS
         this.towers.add(new MachineGunTower(Config.TILE_SIZE * 5, Config.TILE_SIZE * 5));
         this.enemies.add(new FastEnemy(Config.TILE_SIZE * 2, Config.TILE_SIZE * 14));
 
     }
+
+    @Override
+    protected void initBackground() { }
+
+    @Override
+    protected void initButtons() {
+
+    }
+
 
     public void update() {
         enemies.removeIf(element -> element.isDestroyed());

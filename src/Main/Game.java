@@ -1,38 +1,39 @@
 package Main;
 
 import States.GameState.GameField;
-import States.GameState.GameStage;
-import States.MenuState.Menu;
+import States.MenuState.MainMenu;
 import States.State;
 import javafx.animation.AnimationTimer;
-import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 import java.util.Stack;
 
 public class Game extends AnimationTimer {
-    private final GraphicsContext graphicsContext;
-
-    Stack<State> states;
-
+    Stage window;
+    Stack<State> states = new Stack<>();
     GameField field;
 
-    public Game(GraphicsContext graphicsContext) throws FileNotFoundException {
+    public Game(Stage window) throws FileNotFoundException {
         Assets.init();
-        this.graphicsContext = graphicsContext;
-        this.field = new GameField(new GameStage("resource/Map/demo.txt"), graphicsContext);
+        this.window = window;
+        states.push(new MainMenu(states));
+
+//        this.field = new GameField(new GameStage("resource/Map/demo.txt"), graphicsContext);
     }
 
-    public void initStates() {
-        this.states.push(new Menu());
-    }
 
     private void update() {
-        field.update();
+        if (states.isEmpty()) this.stop();
+        else {
+            window.setScene(states.peek().getScene());
+            states.peek().update();
+        }
     }
 
     public void render() {
-        field.render();
+        states.peek().render();
     }
 
     @Override
