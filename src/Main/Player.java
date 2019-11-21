@@ -8,6 +8,11 @@ public class Player {
     private static long money = 30;
     private static int lives = 50;
 
+    public static void reset() {
+        money = STARTING_MONEY;
+        lives = STARTING_LIVES;
+    }
+
     public static void addMoney(long amount) {
         money += amount;
     }

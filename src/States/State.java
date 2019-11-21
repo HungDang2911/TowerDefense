@@ -15,6 +15,7 @@ public abstract class State {
     protected StackPane stackPane;
     protected Canvas canvas;
     protected GraphicsContext graphicsContext;
+    protected boolean quit;
 
     protected State(Stack<State> states) {
         this.states = states;
@@ -49,6 +50,10 @@ public abstract class State {
     }
 
     protected abstract void initButtons();
+
+    public boolean isQuit() {
+        return quit;
+    }
 
     public abstract void update();
     public abstract void render();

@@ -14,6 +14,7 @@ public class MainMenu extends State {
     private Image background;
 
     private Button startButton;
+    private Button creditsButton;
 
     public MainMenu(Stack<State> states) {
         super(states);
@@ -27,6 +28,14 @@ public class MainMenu extends State {
 
     @Override
     protected void initButtons() {
+        initStartButton();
+        initCreditsButton();
+    }
+
+    private void initCreditsButton() {
+    }
+
+    private void initStartButton() {
         startButton = new Button("Start");
         startButton.setOnAction(e -> {
             try {
