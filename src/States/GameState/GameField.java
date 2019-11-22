@@ -2,7 +2,6 @@ package States.GameState;
 
 import Entity.GameTile.AbstractTile;
 import Entity.GameTile.Mountain;
-import Entity.GameTile.Road;
 import Entity.LivingEntity.Bullet.AbstractBullet;
 import Entity.LivingEntity.Enemy.AbstractEnemy;
 import Entity.LivingEntity.Enemy.FastEnemy;
@@ -10,8 +9,6 @@ import Entity.LivingEntity.Tower.AbstractTower;
 import Entity.LivingEntity.Tower.MachineGunTower;
 import Main.Config;
 import States.State;
-import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,15 +27,15 @@ public class GameField extends State{
 
     //OTHERS
     private boolean openingShop;
+    private Shop shop;
 
     public GameField(GameStage gameStage, Stack<State> states) {
         super(states);
-
         this.tiles = gameStage.getTiles();
         this.openingShop = false;
 
         //FOR DEBUGS
-        this.towers.add(new MachineGunTower(Config.TILE_SIZE * 5, Config.TILE_SIZE * 5));
+//        this.towers.add(new MachineGunTower(Config.TILE_SIZE * 5, Config.TILE_SIZE * 5));
         this.enemies.add(new FastEnemy(Config.TILE_SIZE * 2, Config.TILE_SIZE * 14));
 
     }
@@ -62,29 +59,29 @@ public class GameField extends State{
     }
 
     private void updateMouseEvents() {
-        stackPane.setOnMouseMoved(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                mousePosX = event.getSceneX();
-                mousePosY = event.getSceneY();
-            }
+        stackPane.setOnMouseMoved(event -> {
+            mousePosX = event.getSceneX();
+            mousePosY = event.getSceneY();
         });
 
-        stackPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                int column = (int)event.getSceneX() * Config.TILE_SIZE;
-                int row = (int)event.getSceneY()/32;
-                if (!openingShop && tiles[row][column] instanceof Mountain) {
-                    Mountain clickedMountain = (Mountain)tiles[row][column];
-                    if (!clickedMountain.isContainingTower()) openShop(column * Config.TILE_SIZE, row * Config.TILE_SIZE);
-                }
+        stackPane.setOnMouseClicked(event -> {
+            int column = (int)event.getSceneX() / Config.TILE_SIZE;
+            int row = (int)event.getSceneY() / Config.TILE_SIZE;
+            if (tiles[row][column] instanceof Mountain && !openingShop) {
+                Mountain clickedMountain = (Mountain)tiles[row][column];
+                if (!clickedMountain.isContainingTower()) openShop(column * Config.TILE_SIZE, row * Config.TILE_SIZE, clickedMountain);
+                else closeShop();
             }
+            else closeShop();
         });
     }
 
-    private void openShop(double posX, double posY) {
+    private void openShop(double posX, double posY, Mountain clickedMountain) {
+        shop = new Shop(posX, posY, stackPane, towers, clickedMountain);
+    }
 
+    private void closeShop() {
+        stackPane.getChildren().remove(shop);
     }
 
 

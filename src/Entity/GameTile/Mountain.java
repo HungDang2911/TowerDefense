@@ -12,4 +12,8 @@ public class Mountain extends AbstractTile{
     public boolean isContainingTower() {
         return isContainingTower;
     }
+
+    public void setContainingTower(boolean containingTower) {
+        isContainingTower = containingTower;
+    }
 }

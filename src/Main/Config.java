@@ -15,6 +15,24 @@ public class Config {
     public static final double MACHINE_GUN_RANGE = TILE_SIZE * 3.5;
     public static final double MACHINE_GUN_BULLET_SPEED = 10;
 
+    //AIR TOWER
+    public static final int AIR_ATTACK_SPEED = 60;
+    public static final int AIR_DAMAGE = 20;
+    public static final double AIR_RANGE = TILE_SIZE * 3.5;
+    public static final double AIR_BULLET_SPEED = 10;
+
+    //FREEZE TOWER
+    public static final int FREEZE_ATTACK_SPEED = 60;
+    public static final int FREEZE_DAMAGE = 20;
+    public static final double FREEZE_RANGE = TILE_SIZE * 3.5;
+    public static final double FREEZE_BULLET_SPEED = 10;
+
+    //MISSLE TOWER
+    public static final int MISSLE_ATTACK_SPEED = 60;
+    public static final int MISSLE_DAMAGE = 20;
+    public static final double MISSLE_RANGE = TILE_SIZE * 3.5;
+    public static final double MISSLE_BULLET_SPEED = 10;
+
     /** ***************************ENEMIES***************************** **/
     //NORMAL ENEMY
     public static final int NORMAL_ENEMY_HITPOINTS = 60;

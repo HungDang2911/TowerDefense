@@ -1,2 +1,28 @@
-.btn {
+.pane {
+    -fx-background-color: white;
+    -fx-padding: 10px;
+}
+
+.button {
+    -fx-background-color: green;
+}
+
+#air-tower-btn {
+    -fx-background-image: url("../../../resource/Button/Shop/AirTower.png");
+    -fx-background-size: cover;
+}
+
+#freeze-tower-btn {
+    -fx-background-image: url("../../../resource/Button/Shop/FreezeTower.png");
+    -fx-background-size: cover;
+}
+
+#machine-gun-tower-btn {
+    -fx-background-image: url("../../../resource/Button/Shop/MachineGunTower.png");
+    -fx-background-size: cover;
+}
+
+#missle-tower-btn {
+    -fx-background-image: url("../../../resource/Button/Shop/MissleTower.png");
+    -fx-background-size: cover;
 }

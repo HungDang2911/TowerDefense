@@ -1,6 +1,7 @@
 package States;
 
 import Main.Config;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -43,6 +44,7 @@ public abstract class State {
 
     protected void initStackPane() {
         stackPane = new StackPane(canvas);
+        stackPane.setAlignment(Pos.TOP_LEFT);
     }
 
     protected void initScene() {
