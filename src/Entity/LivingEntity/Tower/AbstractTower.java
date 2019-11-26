@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import java.util.List;
 
 public abstract class AbstractTower extends AbstractLivingEntity{
+    protected int level;
     protected int attackSpeed;
     protected double range;
     protected int damage;
@@ -16,11 +17,14 @@ public abstract class AbstractTower extends AbstractLivingEntity{
 
     protected AbstractTower(double posX, double posY, Image texture, int attackSpeed, double range, int damage) {
         super(posX, posY, 1, 1, texture);
+        this.level = 1;
         this.attackSpeed = attackSpeed;
         this.range = range;
         this.damage = damage;
         this.ticks = 0;
     }
+
+    public abstract void upgrade();
 
     public void update(List<AbstractEnemy> enemies, List<AbstractBullet> bullets) {
         if (ticks++ < attackSpeed) return;

@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200i,400&display=swap');
+
+.button {
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 30px;
+    -fx-text-fill: #ff7300;
+    -fx-background-color: Transparent;
+    -fx-background-image: url("../../../resource/Button/MainMenu/Button.png");
+}
+
+.button:hover {
+    -fx-text-fill: #ffb700;
+    -fx-background-image: url("../../../resource/Button/MainMenu/HoverButton.png");
+}
+
+.button:active {
+    -fx-background-image: url("../../../resource/Button/MainMenu/ActiveButton.png");
+}

@@ -6,9 +6,10 @@ import Entity.LivingEntity.Bullet.AbstractBullet;
 import Entity.LivingEntity.Enemy.AbstractEnemy;
 import Entity.LivingEntity.Enemy.FastEnemy;
 import Entity.LivingEntity.Tower.AbstractTower;
-import Entity.LivingEntity.Tower.MachineGunTower;
 import Main.Config;
 import States.State;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.text.FontSmoothingType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +41,29 @@ public class GameField extends State{
 
     }
 
+    public List<AbstractTower> getTowers() {
+        return towers;
+    }
+
+    public void setOpeningShop(boolean openingShop) {
+        this.openingShop = openingShop;
+    }
+
+    @Override
+    protected void initStyleSheets() {
+
+    }
+
     @Override
     protected void initBackground() { }
+
+    @Override
+    protected void initCanvas() {
+        canvas = new Canvas(Config.GAME_FIELD_HORIZONTAL_LENGTH, Config.GAME_FIELD_VERTICAL_LENGTH);
+        canvas.setFocusTraversable(true);
+        graphicsContext = canvas.getGraphicsContext2D();
+        graphicsContext.setFontSmoothingType(FontSmoothingType.LCD);
+    }
 
     @Override
     protected void initButtons() {
@@ -70,18 +92,21 @@ public class GameField extends State{
             if (tiles[row][column] instanceof Mountain && !openingShop) {
                 Mountain clickedMountain = (Mountain)tiles[row][column];
                 if (!clickedMountain.isContainingTower()) openShop(column * Config.TILE_SIZE, row * Config.TILE_SIZE, clickedMountain);
-                else closeShop();
             }
+//            else if (!(tiles[row][column] instanceof Mountain) && !openingShop))
+
             else closeShop();
         });
     }
 
     private void openShop(double posX, double posY, Mountain clickedMountain) {
-        shop = new Shop(posX, posY, stackPane, towers, clickedMountain);
+        shop = new Shop(posX, posY, stackPane, this, clickedMountain);
+        openingShop = true;
     }
 
     private void closeShop() {
         stackPane.getChildren().remove(shop);
+        openingShop = false;
     }
 
 

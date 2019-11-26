@@ -1,6 +1,9 @@
 .pane {
     -fx-background-color: white;
-    -fx-padding: 10px;
+    -fx-background-color: #fcba03;
+    -fx-border-color: yellow;
+    -fx-border-width: 5;
+       -fx-border-style: solid;
 }
 
 .button {

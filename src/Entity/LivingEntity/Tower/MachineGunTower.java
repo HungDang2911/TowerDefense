@@ -7,7 +7,14 @@ import Main.Config;
 
 public class MachineGunTower extends AbstractTower{
     public MachineGunTower(double posX, double posY) {
-        super(posX, posY, Assets.machineGunTower, Config.MACHINE_GUN_ATTACK_SPEED, Config.MACHINE_GUN_RANGE, Config.MACHINE_GUN_DAMAGE);
+        super(posX, posY, Assets.machineGunTower, Config.MACHINE_GUN_ATTACK_SPEED, Config.MACHINE_GUN_RANGE, Config.MACHINE_GUN_DAMAGE[1]);
+    }
+
+    @Override
+    public void upgrade() {
+        this.level++;
+        if (this.level == 3) this.texture = Assets.machineGunTowerLv3;
+        this.damage = Config.MACHINE_GUN_DAMAGE[level];
     }
 
     @Override

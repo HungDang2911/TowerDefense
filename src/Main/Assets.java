@@ -5,12 +5,12 @@ import javafx.scene.image.Image;
 public class Assets {
     public static Image mainMenuBackground;
     public static Image mountain, road, target;
-    public static Image machineGunTower, airTower, freezeTower, missleTower;
+    public static Image machineGunTower, machineGunTowerLv3, airTower, freezeTower, missleTower, missleTowerLv3;
     public static Image normalEnemy, fastEnemy, tankerEnemy, bossEnemy;
     public static Image machineGunBullet, freezeBullet, airBullet, missleBullet;
     public static void init() {
         //Backgrounds
-        mainMenuBackground = new Image("file:resource/textures/Tiles/Mountain.png", Config.GAME_HORIZONTAL_LENGTH, Config.GAME_VERTICAL_LENGTH, true, true);
+        mainMenuBackground = new Image("file:resource/Background/MainMenuBackground.png", Config.MAIN_MENU_HORIZONTAL_LENGTH, Config.MAIN_MENU_VERTICAL_LENGTH, true, true);
 
         //Tiles
         mountain = new Image("file:resource/textures/Tiles/Mountain.png", Config.TILE_SIZE, Config.TILE_SIZE, true, true);
@@ -18,8 +18,10 @@ public class Assets {
 
         //Towers
         machineGunTower = new Image("file:resource/textures/Tower/MachineGunTower.png", Config.TILE_SIZE, Config.TILE_SIZE, true, true);
+        machineGunTowerLv3 = new Image("file:resource/textures/Tower/MachineGunTowerLv3.png", Config.TILE_SIZE, Config.TILE_SIZE, true, true);
         freezeTower = new Image("file:resource/textures/Tower/FreezeTower.png", Config.TILE_SIZE, Config.TILE_SIZE, true, true);
         missleTower = new Image("file:resource/textures/Tower/MissleTower.png", Config.TILE_SIZE, Config.TILE_SIZE, true, true);
+        missleTowerLv3 = new Image("file:resource/textures/Tower/MissleTowerLv3.png", Config.TILE_SIZE, Config.TILE_SIZE, true, true);
         airTower = new Image("file:resource/textures/Tower/AirTower.png", Config.TILE_SIZE, Config.TILE_SIZE, true, true);
 
         //Bullets

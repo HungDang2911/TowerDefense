@@ -3,35 +3,41 @@ package Main;
 public class Config {
     public static final String GAME_NAME = "Tower Defense";
     public static final int TILE_SIZE = 64;
-    public static final int GAME_HORIZONTAL_LENGTH = 1280;
-    public static final int GAME_VERTICAL_LENGTH = 960;
+    public static final int GAME_FIELD_HORIZONTAL_LENGTH = 1280;
+    public static final int GAME_FIELD_VERTICAL_LENGTH = 960;
+    public static final int MAIN_MENU_HORIZONTAL_LENGTH = 1280;
+    public static final int MAIN_MENU_VERTICAL_LENGTH = 640;
 
 
     /** ***************************TOWERS***************************** **/
 
     //MACHINE GUN TOWER
     public static final int MACHINE_GUN_ATTACK_SPEED = 60;
-    public static final int MACHINE_GUN_DAMAGE = 20;
+    public static final int[] MACHINE_GUN_DAMAGE = {0, 20, 50, 120, 300, 700};
     public static final double MACHINE_GUN_RANGE = TILE_SIZE * 3.5;
     public static final double MACHINE_GUN_BULLET_SPEED = 10;
+    public static final int MACHINE_GUN_PRICE = 20;
 
     //AIR TOWER
     public static final int AIR_ATTACK_SPEED = 60;
-    public static final int AIR_DAMAGE = 20;
+    public static final int[] AIR_DAMAGE = {0, 20, 50, 120, 300, 700};
     public static final double AIR_RANGE = TILE_SIZE * 3.5;
     public static final double AIR_BULLET_SPEED = 10;
+    public static final int AIR_PRICE = 20;
 
     //FREEZE TOWER
     public static final int FREEZE_ATTACK_SPEED = 60;
-    public static final int FREEZE_DAMAGE = 20;
+    public static final int[] FREEZE_DAMAGE = {0, 20, 50, 120, 300, 700};
     public static final double FREEZE_RANGE = TILE_SIZE * 3.5;
     public static final double FREEZE_BULLET_SPEED = 10;
+    public static final int FREEZE_PRICE = 20;
 
     //MISSLE TOWER
     public static final int MISSLE_ATTACK_SPEED = 60;
-    public static final int MISSLE_DAMAGE = 20;
+    public static final int[] MISSLE_DAMAGE = {0, 20, 50, 120, 300, 700};
     public static final double MISSLE_RANGE = TILE_SIZE * 3.5;
     public static final double MISSLE_BULLET_SPEED = 10;
+    public static final int MISSLE_PRICE = 20;
 
     /** ***************************ENEMIES***************************** **/
     //NORMAL ENEMY

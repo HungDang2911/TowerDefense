@@ -38,7 +38,7 @@ public abstract class AbstractBullet extends AbstractLivingEntity{
         else {
             this.posX += deltaX;
             this.posY += deltaY;
-            if (this.posX > Config.GAME_HORIZONTAL_LENGTH || this.posX < 0 || this.posY > Config.GAME_VERTICAL_LENGTH || this.posY < 0) this.destroyed = true;
+            if (this.posX > Config.GAME_FIELD_HORIZONTAL_LENGTH || this.posX < 0 || this.posY > Config.GAME_FIELD_VERTICAL_LENGTH || this.posY < 0) this.destroyed = true;
         }
 
     }

@@ -25,8 +25,11 @@ public abstract class State {
         initCanvas();
         initStackPane();
         initScene();
+        initStyleSheets();
         initButtons();
     }
+
+    protected abstract void initStyleSheets();
 
     public Scene getScene() {
         return scene;
@@ -34,12 +37,7 @@ public abstract class State {
 
     protected abstract void initBackground();
 
-    protected void initCanvas() {
-        canvas = new Canvas(Config.GAME_HORIZONTAL_LENGTH, Config.GAME_VERTICAL_LENGTH);
-        canvas.setFocusTraversable(true);
-        graphicsContext = canvas.getGraphicsContext2D();
-        graphicsContext.setFontSmoothingType(FontSmoothingType.LCD);
-    }
+    protected abstract void initCanvas();
 
 
     protected void initStackPane() {
