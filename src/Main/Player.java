@@ -15,7 +15,7 @@ public class Player {
         lives = STARTING_LIVES;
     }
 
-    public static void addMoney(int amount) {
+    public static void increaseMoney(int amount) {
         money += amount;
     }
 

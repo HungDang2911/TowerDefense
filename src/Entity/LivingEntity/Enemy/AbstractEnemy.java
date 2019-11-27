@@ -27,7 +27,7 @@ public abstract class AbstractEnemy extends AbstractLivingEntity {
         this.hitPoints -= (damage - this.armor);
         if (this.hitPoints <= 0) {
             destroyed = true;
-            Player.addMoney(this.reward);
+            Player.increaseMoney(this.reward);
         }
     }
 

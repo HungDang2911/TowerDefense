@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 
 public class Assets {
     public static Image mainMenuBackground;
+    public static Image livesIcon, moneyIcon, waveIcon;
     public static Image mountain, road, target;
     public static Image machineGunTower, machineGunTowerLv3, airTower, freezeTower, missleTower, missleTowerLv3;
     public static Image normalEnemy, fastEnemy, tankerEnemy, bossEnemy;
@@ -11,6 +12,8 @@ public class Assets {
     public static void init() {
         //Backgrounds
         mainMenuBackground = new Image("file:resource/Background/MainMenuBackground.png", Config.MAIN_MENU_HORIZONTAL_LENGTH, Config.MAIN_MENU_VERTICAL_LENGTH, true, true);
+
+        //Icons
 
         //Tiles
         mountain = new Image("file:resource/textures/Tiles/Mountain.png", Config.TILE_SIZE, Config.TILE_SIZE, true, true);

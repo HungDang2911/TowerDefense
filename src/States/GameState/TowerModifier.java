@@ -2,7 +2,6 @@ package States.GameState;
 
 import Entity.GameTile.Mountain;
 import Entity.LivingEntity.Tower.*;
-import Main.Config;
 import Main.Player;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
@@ -16,16 +15,18 @@ public class TowerModifier extends FlowPane {
 
     private StackPane root;
     private List<AbstractTower> towers;
+    private GameField field;
     private Mountain mountain;
 
     private Button upgradeTowerBtn;
     private Button sellTowerBtn;
 
-    public TowerModifier(double posX, double posY, StackPane root, List<AbstractTower> towers, Mountain mountain) {
+    public TowerModifier(double posX, double posY, GameField field, Mountain mountain) {
         this.posX = posX;
         this.posY = posY;
-        this.root = root;
-        this.towers = towers;
+        this.field = field;
+        this.root = field.getStackPane();
+        this.towers = field.getTowers();
         this.mountain = mountain;
 
         root.getChildren().add(this);
@@ -65,10 +66,12 @@ public class TowerModifier extends FlowPane {
         upgradeTowerBtn.setId("upgrade-tower-btn");
         upgradeTowerBtn.setMinSize(32,32);
         upgradeTowerBtn.setOnAction(e -> {
-            towers.add(new AirTower(mountain.getPosX(), mountain.getPosY()));
-            mountain.setContainingTower(true);
-            root.getChildren().remove(this);
-            Player.decreaseMoney(Config.AIR_PRICE);
+            if (Player.getMoney() > mountain.getTower().getNextLevelPrice()) {
+                Player.decreaseMoney(mountain.getTower().getNextLevelPrice());
+                mountain.getTower().upgrade();
+                root.getChildren().remove(this);
+                field.setOpeningTowerModifier(false);
+            }
         });
         this.getChildren().add(upgradeTowerBtn);
     }
@@ -78,10 +81,12 @@ public class TowerModifier extends FlowPane {
         sellTowerBtn.setId("sell-tower-btn");
         sellTowerBtn.setMinSize(32,32);
         sellTowerBtn.setOnAction(e -> {
-            towers.add(new AirTower(mountain.getPosX(), mountain.getPosY()));
-            mountain.setContainingTower(true);
+            Player.increaseMoney(mountain.getTower().getPrice() * 75/100);
+            towers.remove(mountain.getTower());
+            mountain.setContainingTower(false);
+            mountain.setTower(null);
             root.getChildren().remove(this);
-            Player.decreaseMoney(Config.AIR_PRICE);
+            field.setOpeningTowerModifier(false);
         });
         this.getChildren().add(sellTowerBtn);
     }

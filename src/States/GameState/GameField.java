@@ -9,6 +9,7 @@ import Entity.LivingEntity.Tower.AbstractTower;
 import Main.Config;
 import States.State;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.FontSmoothingType;
 
 import java.util.ArrayList;
@@ -29,16 +30,25 @@ public class GameField extends State{
     //OTHERS
     private boolean openingShop;
     private Shop shop;
+    private boolean openingTowerModifier;
+    private TowerModifier towerModifier;
 
     public GameField(GameStage gameStage, Stack<State> states) {
         super(states);
         this.tiles = gameStage.getTiles();
         this.openingShop = false;
+        this.openingTowerModifier = false;
 
         //FOR DEBUGS
 //        this.towers.add(new MachineGunTower(Config.TILE_SIZE * 5, Config.TILE_SIZE * 5));
         this.enemies.add(new FastEnemy(Config.TILE_SIZE * 2, Config.TILE_SIZE * 14));
 
+    }
+
+
+    //SETTER AND GETTERS
+    public StackPane getStackPane() {
+        return this.stackPane;
     }
 
     public List<AbstractTower> getTowers() {
@@ -49,6 +59,11 @@ public class GameField extends State{
         this.openingShop = openingShop;
     }
 
+    public void setOpeningTowerModifier(boolean openingTowerModifier) {
+        this.openingTowerModifier = openingTowerModifier;
+    }
+
+    //INITIALIZATION
     @Override
     protected void initStyleSheets() {
 
@@ -70,6 +85,7 @@ public class GameField extends State{
 
     }
 
+    //UPDATE AND RENDERS
     private void updateEntities() {
         enemies.removeIf(element -> element.isDestroyed());
         bullets.removeIf(element -> element.isDestroyed());
@@ -89,24 +105,36 @@ public class GameField extends State{
         stackPane.setOnMouseClicked(event -> {
             int column = (int)event.getSceneX() / Config.TILE_SIZE;
             int row = (int)event.getSceneY() / Config.TILE_SIZE;
-            if (tiles[row][column] instanceof Mountain && !openingShop) {
+            if (tiles[row][column] instanceof Mountain && !openingShop && !openingTowerModifier) {
                 Mountain clickedMountain = (Mountain)tiles[row][column];
                 if (!clickedMountain.isContainingTower()) openShop(column * Config.TILE_SIZE, row * Config.TILE_SIZE, clickedMountain);
+                else openTowerModifier(column * Config.TILE_SIZE, row * Config.TILE_SIZE, clickedMountain);
             }
-//            else if (!(tiles[row][column] instanceof Mountain) && !openingShop))
-
-            else closeShop();
+            else {
+                closeShop();
+                closeTowerModifier();
+            }
         });
     }
 
     private void openShop(double posX, double posY, Mountain clickedMountain) {
-        shop = new Shop(posX, posY, stackPane, this, clickedMountain);
+        shop = new Shop(posX, posY,this, clickedMountain);
         openingShop = true;
+    }
+
+    private void openTowerModifier(double posX, double posY, Mountain clickedMountain) {
+        towerModifier = new TowerModifier(posX, posY,this, clickedMountain);
+        openingTowerModifier = true;
     }
 
     private void closeShop() {
         stackPane.getChildren().remove(shop);
         openingShop = false;
+    }
+
+    private void closeTowerModifier() {
+        stackPane.getChildren().remove(towerModifier);
+        openingTowerModifier = false;
     }
 
 

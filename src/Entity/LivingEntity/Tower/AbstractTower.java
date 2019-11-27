@@ -24,6 +24,14 @@ public abstract class AbstractTower extends AbstractLivingEntity{
         this.ticks = 0;
     }
 
+    public int getLevel() {
+        return level;
+    }
+
+    public abstract int getPrice();
+
+    public abstract int getNextLevelPrice();
+
     public abstract void upgrade();
 
     public void update(List<AbstractEnemy> enemies, List<AbstractBullet> bullets) {

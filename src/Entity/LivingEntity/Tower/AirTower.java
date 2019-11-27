@@ -8,13 +8,24 @@ import Main.Config;
 
 public class AirTower extends AbstractTower{
     public AirTower(double posX, double posY) {
-        super(posX, posY, Assets.airTower, Config.AIR_ATTACK_SPEED, Config.AIR_RANGE, Config.AIR_DAMAGE[1]);
+        super(posX, posY, Assets.airTower, Config.AIR_ATTACK_SPEED, Config.AIR_RANGE[1], Config.AIR_DAMAGE[1]);
+    }
+
+    @Override
+    public int getPrice() {
+        return Config.AIR_PRICE[this.level];
+    }
+
+    @Override
+    public int getNextLevelPrice() {
+        return Config.AIR_PRICE[this.level + 1];
     }
 
     @Override
     public void upgrade() {
         this.level++;
         this.damage = Config.AIR_DAMAGE[level];
+        this.range = Config.AIR_RANGE[level];
     }
 
     @Override

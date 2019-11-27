@@ -18,6 +18,7 @@ public class Shop extends FlowPane {
     private double posY;
 
     private StackPane root;
+    private List<AbstractTower> towers;
     private GameField field;
     private Mountain mountain;
 
@@ -28,10 +29,11 @@ public class Shop extends FlowPane {
 
     private Circle towerRange;
 
-    public Shop(double posX, double posY, StackPane root, GameField field, Mountain mountain) {
+    public Shop(double posX, double posY, GameField field, Mountain mountain) {
         this.posX = posX;
         this.posY = posY;
-        this.root = root;
+        this.root = field.getStackPane();
+        this.towers = field.getTowers();
         this.field = field;
         this.mountain = mountain;
 
@@ -76,11 +78,11 @@ public class Shop extends FlowPane {
         airTowerBtn.setOnMouseExited(e -> root.getChildren().remove(towerRange));
         airTowerBtn.setOnAction(e -> {
             AirTower airTower = new AirTower(mountain.getPosX(), mountain.getPosY());
-            field.getTowers().add(airTower);
+            towers.add(airTower);
             mountain.setContainingTower(true);
             mountain.setTower(airTower);
             root.getChildren().remove(this);
-            Player.decreaseMoney(Config.AIR_PRICE);
+            Player.decreaseMoney(Config.AIR_PRICE[1]);
             field.setOpeningShop(false);
         });
         this.getChildren().add(airTowerBtn);
@@ -96,11 +98,11 @@ public class Shop extends FlowPane {
         });
         missleTowerBtn.setOnAction(e -> {
             MissleTower missleTower = new MissleTower(mountain.getPosX(), mountain.getPosY());
-            field.getTowers().add(missleTower);
+            towers.add(missleTower);
             mountain.setContainingTower(true);
             mountain.setTower(missleTower);
             root.getChildren().remove(this);
-            Player.decreaseMoney(Config.MISSLE_PRICE);
+            Player.decreaseMoney(Config.MISSLE_PRICE[1]);
             field.setOpeningShop(false);
         });
 
@@ -114,11 +116,11 @@ public class Shop extends FlowPane {
 //        airTowerBtn.setOnMouseEntered(e -> drawRange(posX + Config.TILE_SIZE / 2, posY + Config.TILE_SIZE / 2, Config.AIR_RANGE));
         freezeTowerBtn.setOnAction(e -> {
             FreezeTower freezeTower = new FreezeTower(mountain.getPosX(), mountain.getPosY());
-            field.getTowers().add(freezeTower);
+            towers.add(freezeTower);
             mountain.setContainingTower(true);
             mountain.setTower(freezeTower);
             root.getChildren().remove(this);
-            Player.decreaseMoney(Config.FREEZE_PRICE);
+            Player.decreaseMoney(Config.FREEZE_PRICE[1]);
             field.setOpeningShop(false);
         });
         this.getChildren().add(freezeTowerBtn);
@@ -131,11 +133,11 @@ public class Shop extends FlowPane {
 //        airTowerBtn.setOnMouseEntered(e -> drawRange(posX + Config.TILE_SIZE / 2, posY + Config.TILE_SIZE / 2, Config.AIR_RANGE));
         machineGunTowerBtn.setOnAction(e -> {
             MachineGunTower machineGunTower = new MachineGunTower(mountain.getPosX(), mountain.getPosY());
-            field.getTowers().add(machineGunTower);
+            towers.add(machineGunTower);
             mountain.setContainingTower(true);
             mountain.setTower(machineGunTower);
             root.getChildren().remove(this);
-            Player.decreaseMoney(Config.MACHINE_GUN_PRICE);
+            Player.decreaseMoney(Config.MACHINE_GUN_PRICE[1]);
             field.setOpeningShop(false);
         });
         this.getChildren().add(machineGunTowerBtn);

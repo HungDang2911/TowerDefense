@@ -7,7 +7,17 @@ import Main.Config;
 
 public class MissleTower extends AbstractTower{
     public MissleTower(double posX, double posY) {
-        super(posX, posY, Assets.missleTower, Config.MISSLE_ATTACK_SPEED, Config.MISSLE_RANGE, Config.AIR_DAMAGE[1]);
+        super(posX, posY, Assets.missleTower, Config.MISSLE_ATTACK_SPEED, Config.MISSLE_RANGE[1], Config.AIR_DAMAGE[1]);
+    }
+
+    @Override
+    public int getPrice() {
+        return Config.MISSLE_PRICE[this.level];
+    }
+
+    @Override
+    public int getNextLevelPrice() {
+        return Config.MISSLE_PRICE[this.level + 1];
     }
 
     @Override
@@ -15,6 +25,7 @@ public class MissleTower extends AbstractTower{
         this.level++;
         if (this.level == 3) this.texture = Assets.missleTowerLv3;
         this.damage = Config.MISSLE_DAMAGE[level];
+        this.range = Config.MISSLE_RANGE[level];
     }
 
     @Override
