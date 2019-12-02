@@ -2,29 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3625c482-e472-499e-9338-de9b241e755a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/States/GameState/Information.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/States/GameState/Information.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/States/GameState/InteractBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/Main/Assets.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TowerDefense/Main/Assets.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/Main/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TowerDefense/Main/Config.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/States/GameState/GameField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TowerDefense/States/GameState/GameField.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/States/GameState/Infomation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/States/GameState/Shop.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TowerDefense/States/GameState/Shop.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/GameTile/Spawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GameTile/Spawner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/LivingEntity/Tower/AbstractTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/Tower/AbstractTower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/LivingEntity/Tower/AirTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/Tower/AirTower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/LivingEntity/Tower/FreezeTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/Tower/FreezeTower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/LivingEntity/Tower/MachineGunTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/Tower/MachineGunTower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/LivingEntity/Tower/MissleTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LivingEntity/Tower/MissleTower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Assets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Assets.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/GameState/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/GameState/GameField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/GameState/GameStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/GameState/GameStage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/GameState/Infomation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/GameState/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/GameState/Shop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/GameState/TowerModifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/GameState/TowerModifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/States/GameState/Information.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TowerDefense/States/GameState/Information.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/States/GameState/Information.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TowerDefense/States/GameState/Information.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/States/GameState/Information.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/GameState/Information.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/States/GameState/Information.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/GameState/Information.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

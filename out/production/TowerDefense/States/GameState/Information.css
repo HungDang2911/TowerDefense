@@ -1,7 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+@font-face{
+    font-family: 'VT323-Regular';
+    src: url('../../../resource/Font/VT323-Regular.ttf');
+}
 
-.text {
-    -fx-font-size: 35;
-    -fx-font-family: 'Source Sans Pro', sans-serif;
-    -fx-text-inner-color: #d5dbd6;
+* {
+    -fx-font-size: 20;
+    -fx-font-family: 'VT323-Regular', sans-serif;
+    -fx-fill: #d5dbd6;
 }

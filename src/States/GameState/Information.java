@@ -31,16 +31,31 @@ public class Information extends StackPane {
     }
 
     private void init() {
-        this.setAlignment(Pos.TOP_LEFT);
         this.getStylesheets().add("file:src/States/GameState/Information.css");
-
+        this.setAlignment(Pos.TOP_LEFT);
         field.getStackPane().getChildren().add(this);
+        initImageView();
+        initText();
+    }
 
+    private void initImageView() {
         this.getChildren().add(livesIcon);
+        livesIcon.setTranslateX(10);
+        livesIcon.setTranslateY(5);
+        this.getChildren().add(moneyIcon);
+        moneyIcon.setTranslateX(130);
+        moneyIcon.setTranslateY(5);
+        this.getChildren().add(waveIcon);
+        waveIcon.setTranslateX(10);
+        waveIcon.setTranslateY(50);
+    }
 
+    private void initText() {
         this.getChildren().add(lives);
-        lives.getStyleClass().add("text");
-
-//        this.getChildren().add(money);
+        lives.setTranslateX(60);
+        lives.setTranslateY(10);
+        this.getChildren().add(money);
+        money.setTranslateX(183);
+        money.setTranslateY(10);
     }
 }
