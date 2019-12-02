@@ -21,6 +21,11 @@ public class MachineGunTower extends AbstractTower{
     }
 
     @Override
+    public double getNextLevelRange() {
+        return Config.MACHINE_GUN_RANGE[this.level + 1];
+    }
+
+    @Override
     public void upgrade() {
         this.level++;
         if (this.level == 3) this.texture = Assets.machineGunTowerLv3;

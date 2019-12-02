@@ -7,8 +7,8 @@ public class Player {
     private static final int STARTING_LIVES = 30;
     private static final int STARTING_MONEY = 50;
 
-    private static int money = 30;
-    private static int lives = 50;
+    private static int lives = 30;
+    private static int money = 50;
 
     public static void reset() {
         money = STARTING_MONEY;

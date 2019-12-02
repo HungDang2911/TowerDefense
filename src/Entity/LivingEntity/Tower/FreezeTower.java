@@ -22,6 +22,11 @@ public class FreezeTower extends AbstractTower{
     }
 
     @Override
+    public double getNextLevelRange() {
+        return Config.FREEZE_RANGE[this.level + 1];
+    }
+
+    @Override
     public void upgrade() {
         this.level++;
         this.damage = Config.FREEZE_DAMAGE[level];

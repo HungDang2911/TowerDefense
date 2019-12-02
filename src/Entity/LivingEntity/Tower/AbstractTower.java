@@ -32,6 +32,8 @@ public abstract class AbstractTower extends AbstractLivingEntity{
 
     public abstract int getNextLevelPrice();
 
+    public abstract double getNextLevelRange();
+
     public abstract void upgrade();
 
     public void update(List<AbstractEnemy> enemies, List<AbstractBullet> bullets) {

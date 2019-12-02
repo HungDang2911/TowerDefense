@@ -22,6 +22,11 @@ public class AirTower extends AbstractTower{
     }
 
     @Override
+    public double getNextLevelRange() {
+        return Config.AIR_RANGE[this.level + 1];
+    }
+
+    @Override
     public void upgrade() {
         this.level++;
         this.damage = Config.AIR_DAMAGE[level];

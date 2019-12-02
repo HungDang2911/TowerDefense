@@ -1,48 +1,25 @@
 package States.GameState;
 
 import Entity.GameTile.Mountain;
-import Entity.LivingEntity.Tower.*;
+import Main.Config;
 import Main.Player;
 import javafx.scene.control.Button;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.StackPane;
 
-import java.util.List;
 
-public class TowerModifier extends FlowPane {
-    private double posX;
-    private double posY;
-
-    private StackPane root;
-    private List<AbstractTower> towers;
-    private GameField field;
-    private Mountain mountain;
-
+public class TowerModifier extends InteractBar {
     private Button upgradeTowerBtn;
     private Button sellTowerBtn;
 
     public TowerModifier(double posX, double posY, GameField field, Mountain mountain) {
-        this.posX = posX;
-        this.posY = posY;
-        this.field = field;
-        this.root = field.getStackPane();
-        this.towers = field.getTowers();
-        this.mountain = mountain;
-
-        root.getChildren().add(this);
-
-        initSize();
-        initStyleSheets();
-        initButtons();
-        initPosition();
+        super(posX, posY, field, mountain);
     }
 
-    private void initPosition() {
+    protected void initPosition() {
         this.setTranslateX(posX);
         this.setTranslateY(posY);
     }
 
-    private void initSize() {
+    protected void initSize() {
         this.setMinWidth(157);
         this.setMaxWidth(157);
         this.setMinHeight(100);
@@ -50,12 +27,7 @@ public class TowerModifier extends FlowPane {
         this.setHgap(3);
     }
 
-    private void initStyleSheets() {
-        this.getStylesheets().add("file:src/States/GameState/InteractBar.css");
-        this.getStyleClass().add("pane");
-    }
-
-    private void initButtons() {
+    protected void initButtons() {
         initUpgradeTowerButton();
         initSellButton();
     }
@@ -65,7 +37,10 @@ public class TowerModifier extends FlowPane {
         upgradeTowerBtn = new Button();
         upgradeTowerBtn.setId("upgrade-tower-btn");
         upgradeTowerBtn.setMinSize(32,32);
+        upgradeTowerBtn.setOnMouseEntered(e -> showRange(posX + Config.TILE_SIZE / 2, posY + Config.TILE_SIZE / 2, mountain.getTower().getNextLevelRange()));
+        upgradeTowerBtn.setOnMouseExited(e -> root.getChildren().remove(towerRange));
         upgradeTowerBtn.setOnAction(e -> {
+            root.getChildren().remove(towerRange);
             if (Player.getMoney() > mountain.getTower().getNextLevelPrice()) {
                 Player.decreaseMoney(mountain.getTower().getNextLevelPrice());
                 mountain.getTower().upgrade();

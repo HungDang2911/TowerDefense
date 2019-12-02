@@ -33,20 +33,26 @@ public class GameField extends State{
     private boolean openingTowerModifier;
     private TowerModifier towerModifier;
 
+    private Information info;
+
     public GameField(GameStage gameStage, Stack<State> states) {
         super(states);
         this.tiles = gameStage.getTiles();
         this.openingShop = false;
         this.openingTowerModifier = false;
+        this.info = new Information(this);
 
         //FOR DEBUGS
 //        this.towers.add(new MachineGunTower(Config.TILE_SIZE * 5, Config.TILE_SIZE * 5));
         this.enemies.add(new FastEnemy(Config.TILE_SIZE * 2, Config.TILE_SIZE * 14));
-
     }
 
 
     //SETTER AND GETTERS
+    public List<AbstractEnemy> getEnemies() {
+        return enemies;
+    }
+
     public StackPane getStackPane() {
         return this.stackPane;
     }
@@ -117,6 +123,10 @@ public class GameField extends State{
         });
     }
 
+    private void updateInfo() {
+        info.update();
+    }
+
     private void openShop(double posX, double posY, Mountain clickedMountain) {
         shop = new Shop(posX, posY,this, clickedMountain);
         openingShop = true;
@@ -142,6 +152,7 @@ public class GameField extends State{
         if (isQuit()) states.pop();
         updateMouseEvents();
         updateEntities();
+        updateInfo();
     }
 
     public void render() {

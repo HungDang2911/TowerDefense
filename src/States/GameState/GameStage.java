@@ -4,10 +4,13 @@ import Entity.GameTile.AbstractTile;
 import Entity.GameTile.Mountain;
 import Entity.GameTile.Road;
 import Entity.GameTile.Target;
+import Entity.LivingEntity.Enemy.AbstractEnemy;
 import Main.Config;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class GameStage {
@@ -26,6 +29,7 @@ public class GameStage {
         File map = new File(path);
 
         try (Scanner scanner = new Scanner(map)) {
+            //MAP LOAD
             int horizontalLength = scanner.nextInt();
             int verticalLength = scanner.nextInt();
 
@@ -40,7 +44,12 @@ public class GameStage {
                 }
             }
 
+//            //SPAWNER LOAD
+//            int spawnerPosX = scanner.nextInt();
+//            int spawnerPosY = scanner.nextInt();
+//
+//            Queue<AbstractEnemy> enemies = new LinkedList<>();
+//
         }
-
     }
 }

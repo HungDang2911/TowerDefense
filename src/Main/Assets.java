@@ -14,6 +14,9 @@ public class Assets {
         mainMenuBackground = new Image("file:resource/Background/MainMenuBackground.png", Config.MAIN_MENU_HORIZONTAL_LENGTH, Config.MAIN_MENU_VERTICAL_LENGTH, true, true);
 
         //Icons
+        livesIcon = new Image("file:resource/Icon/livesIcon.png", 96, 96, true, true);
+        moneyIcon = new Image("file:resource/Icon/moneyIcon.png", 96, 96,true, true);
+        waveIcon = new Image("file:resource/Icon/waveIcon.png", 96, 96, true, true);
 
         //Tiles
         mountain = new Image("file:resource/textures/Tiles/Mountain.png", Config.TILE_SIZE, Config.TILE_SIZE, true, true);
