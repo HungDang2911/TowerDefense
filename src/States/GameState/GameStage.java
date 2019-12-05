@@ -1,10 +1,7 @@
 package States.GameState;
 
-import Entity.GameTile.AbstractTile;
-import Entity.GameTile.Mountain;
-import Entity.GameTile.Road;
-import Entity.GameTile.Target;
-import Entity.LivingEntity.Enemy.AbstractEnemy;
+import Entity.GameTile.*;
+import Entity.LivingEntity.Enemy.*;
 import Main.Config;
 
 import java.io.File;
@@ -19,7 +16,6 @@ public class GameStage {
     public GameStage(String path) throws FileNotFoundException {
             load(path);
     }
-
 
     public AbstractTile[][] getTiles() {
         return tiles;
@@ -40,16 +36,29 @@ public class GameStage {
                     int value = scanner.nextInt();
                     if (value == 0) tiles[y][x] = new Mountain(x * Config.TILE_SIZE, y * Config.TILE_SIZE);
                     if (value == 1 || value == 2 || value == 3 || value == 4) tiles[y][x] = new Road(x * Config.TILE_SIZE, y * Config.TILE_SIZE, value);
-                    if (value == 5) tiles[y][x] = new Target(x * Config.TILE_SIZE, y * Config.TILE_SIZE, value);
+                    if (value == 5) tiles[y][x] = new Target(x * Config.TILE_SIZE, y * Config.TILE_SIZE);
                 }
             }
 
-//            //SPAWNER LOAD
-//            int spawnerPosX = scanner.nextInt();
-//            int spawnerPosY = scanner.nextInt();
-//
-//            Queue<AbstractEnemy> enemies = new LinkedList<>();
-//
+            //SPAWNER LOAD
+            int spawnerCol = scanner.nextInt();
+            int spawnerRow = scanner.nextInt();
+
+            Queue<Queue<AbstractEnemy>> allEnemies = new LinkedList<>();
+
+            for (int i = 0; i < Config.NUM_OF_WAVES; i++) {
+                int numOfRoundEnemies = scanner.nextInt();
+                Queue<AbstractEnemy> roundEnemies = new LinkedList<>();
+                for (int j = 0; j < numOfRoundEnemies; j++) {
+                    int value = scanner.nextInt();
+                    if (value == 1) roundEnemies.add(new NormalEnemy(spawnerCol  * Config.TILE_SIZE, spawnerRow * Config.TILE_SIZE));
+                    if (value == 2) roundEnemies.add(new FastEnemy(spawnerCol  * Config.TILE_SIZE, spawnerRow * Config.TILE_SIZE));
+                    if (value == 3) roundEnemies.add(new TankerEnemy(spawnerCol  * Config.TILE_SIZE, spawnerRow * Config.TILE_SIZE));
+                    if (value == 4) roundEnemies.add(new BossEnemy(spawnerCol  * Config.TILE_SIZE, spawnerRow * Config.TILE_SIZE));
+                }
+                allEnemies.add(roundEnemies);
+            }
+            tiles[spawnerRow][spawnerCol] = new Spawner(spawnerCol * Config.TILE_SIZE, spawnerRow * Config.TILE_SIZE, tiles[spawnerRow][spawnerCol].getDirectionForEnemy(), allEnemies);
         }
     }
 }

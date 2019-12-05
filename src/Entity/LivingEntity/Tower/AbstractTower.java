@@ -16,7 +16,7 @@ public abstract class AbstractTower extends AbstractLivingEntity{
     protected int ticks;
 
     protected AbstractTower(double posX, double posY, Image texture, int attackSpeed, double range, int damage) {
-        super(posX, posY, 1, 1, texture);
+        super(posX, posY, texture);
         this.level = 1;
         this.attackSpeed = attackSpeed;
         this.range = range;
@@ -34,6 +34,14 @@ public abstract class AbstractTower extends AbstractLivingEntity{
 
     public abstract double getNextLevelRange();
 
+    protected void changeAngle(double x, double y) {
+        double angle = Math.toDegrees(Math.atan((x - posX) / (y - posY)));
+        if (x > posX && y > posY) textureAngle = 180 - angle; //R
+        if (x > posX && y < posY) textureAngle = -angle;
+        if (x < posX && y > posY) textureAngle = 180 - angle; //R
+        if (x < posX && y < posY) textureAngle = -angle;
+    }
+
     public abstract void upgrade();
 
     public void update(List<AbstractEnemy> enemies, List<AbstractBullet> bullets) {
@@ -42,6 +50,7 @@ public abstract class AbstractTower extends AbstractLivingEntity{
         //Choose target then shoot it
         if (enemies.isEmpty()) return;
         if (this.target != null && getDistance(target) <= range) {
+            changeAngle(target.getPosX(), target.getPosY());
             bullets.add(getBullet(posX, posY, target.getPosX(), target.getPosY()));
         }
         else {
@@ -55,6 +64,7 @@ public abstract class AbstractTower extends AbstractLivingEntity{
             }
             if (closetEnemy != null) {
                 this.target = closetEnemy;
+                changeAngle(target.getPosX(), target.getPosY());
                 bullets.add(getBullet(posX, posY, target.getPosX(), target.getPosY()));
             }
         }

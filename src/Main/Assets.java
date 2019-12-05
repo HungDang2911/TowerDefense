@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 public class Assets {
     public static Image mainMenuBackground;
     public static Image livesIcon, moneyIcon, waveIcon;
-    public static Image mountain, road, target;
+    public static Image mountain, road, target, spawner;
     public static Image machineGunTower, machineGunTowerLv3, airTower, freezeTower, missleTower, missleTowerLv3;
     public static Image normalEnemy, fastEnemy, tankerEnemy, bossEnemy;
     public static Image machineGunBullet, freezeBullet, airBullet, missleBullet;
@@ -21,6 +21,8 @@ public class Assets {
         //Tiles
         mountain = new Image("file:resource/textures/Tiles/Mountain.png", Config.TILE_SIZE, Config.TILE_SIZE, true, true);
         road = new Image("file:resource/textures/Tiles/Road.png", Config.TILE_SIZE, Config.TILE_SIZE, true, true);
+        target = new Image("file:resource/textures/Tiles/Target.png", Config.TILE_SIZE, Config.TILE_SIZE, true, true);
+        spawner = new Image("file:resource/textures/Tiles/Spawner.png", Config.TILE_SIZE, Config.TILE_SIZE, true, true);
 
         //Towers
         machineGunTower = new Image("file:resource/textures/Tower/MachineGunTower.png", Config.TILE_SIZE, Config.TILE_SIZE, true, true);

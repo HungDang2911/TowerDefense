@@ -2,6 +2,7 @@ package States.GameState;
 
 import Entity.GameTile.AbstractTile;
 import Entity.GameTile.Mountain;
+import Entity.GameTile.Spawner;
 import Entity.LivingEntity.Bullet.AbstractBullet;
 import Entity.LivingEntity.Enemy.AbstractEnemy;
 import Entity.LivingEntity.Enemy.FastEnemy;
@@ -9,6 +10,8 @@ import Entity.LivingEntity.Tower.AbstractTower;
 import Main.Config;
 import States.State;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.FontSmoothingType;
 
@@ -17,15 +20,18 @@ import java.util.List;
 import java.util.Stack;
 
 public class GameField extends State{
+    //WAVES
+    private int currentWave;
+    private boolean changingWave;
+
     //ENTITES
     private AbstractTile[][] tiles;
     private List<AbstractEnemy> enemies = new ArrayList<>();
     private List<AbstractTower> towers = new ArrayList<>();
     private List<AbstractBullet> bullets = new ArrayList<>();
 
-    //MOUSE
-    private double mousePosX;
-    private double mousePosY;
+    //BUTTONS
+    private Button nextWaveBtn;
 
     //OTHERS
     private boolean openingShop;
@@ -41,6 +47,7 @@ public class GameField extends State{
         this.openingShop = false;
         this.openingTowerModifier = false;
         this.info = new Information(this);
+        this.changingWave = true;
 
         //FOR DEBUGS
 //        this.towers.add(new MachineGunTower(Config.TILE_SIZE * 5, Config.TILE_SIZE * 5));
@@ -49,6 +56,14 @@ public class GameField extends State{
 
 
     //SETTER AND GETTERS
+    public void setChangingWave(boolean changingWave) {
+        this.changingWave = changingWave;
+    }
+
+    public boolean isChangingWave() {
+        return changingWave;
+    }
+
     public List<AbstractEnemy> getEnemies() {
         return enemies;
     }
@@ -72,7 +87,7 @@ public class GameField extends State{
     //INITIALIZATION
     @Override
     protected void initStyleSheets() {
-
+        scene.getStylesheets().add("file:src/States/GameState/GameField.css");
     }
 
     @Override
@@ -88,27 +103,54 @@ public class GameField extends State{
 
     @Override
     protected void initButtons() {
+        initNextWaveBtn();
+    }
 
+    private void initNextWaveBtn() {
+        nextWaveBtn = new Button();
+        nextWaveBtn.setId("next-wave-btn");
+        nextWaveBtn.setMinSize(123,57);
+        nextWaveBtn.setTranslateX( Config.GAME_FIELD_HORIZONTAL_LENGTH - 150);
+        nextWaveBtn.setOnAction(e -> {
+            changingWave = false;
+            nextWaveBtn.setVisible(false);
+        });
+        stackPane.getChildren().add(nextWaveBtn);
     }
 
     //UPDATE AND RENDERS
+    public void win() {}
+
     private void updateEntities() {
         enemies.removeIf(element -> element.isDestroyed());
         bullets.removeIf(element -> element.isDestroyed());
         towers.removeIf(element -> element.isDestroyed());
 
+        for (AbstractTile[] tile : tiles)
+            for (int j = 0; j < tiles[0].length; j++)
+                if (tile[j] instanceof Spawner)
+                    tile[j].update(this);
         for (AbstractBullet element:bullets) element.update(enemies);
         for (AbstractEnemy element:enemies) element.update(tiles);
         for (AbstractTower element:towers) element.update(enemies, bullets);
     }
 
     private void updateMouseEvents() {
-        stackPane.setOnMouseMoved(event -> {
-            mousePosX = event.getSceneX();
-            mousePosY = event.getSceneY();
-        });
+//        stackPane.setOnMouseClicked(event -> {
+//            int column = (int)event.getSceneX() / Config.TILE_SIZE;
+//            int row = (int)event.getSceneY() / Config.TILE_SIZE;
+//            if (tiles[row][column] instanceof Mountain && !openingShop && !openingTowerModifier) {
+//                Mountain clickedMountain = (Mountain)tiles[row][column];
+//                if (!clickedMountain.isContainingTower()) openShop(column * Config.TILE_SIZE, row * Config.TILE_SIZE, clickedMountain);
+//                else openTowerModifier(column * Config.TILE_SIZE, row * Config.TILE_SIZE, clickedMountain);
+//            }
+//            else {
+//                closeShop();
+//                closeTowerModifier();
+//            }
+//        });
 
-        stackPane.setOnMouseClicked(event -> {
+        stackPane.addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
             int column = (int)event.getSceneX() / Config.TILE_SIZE;
             int row = (int)event.getSceneY() / Config.TILE_SIZE;
             if (tiles[row][column] instanceof Mountain && !openingShop && !openingTowerModifier) {
@@ -156,9 +198,9 @@ public class GameField extends State{
     }
 
     public void render() {
-        for (int i = 0; i < tiles.length; i++)
+        for (AbstractTile[] tile : tiles)
             for (int j = 0; j < tiles[0].length; j++)
-                tiles[i][j].render(graphicsContext);
+                tile[j].render(graphicsContext);
         for (AbstractEnemy element:enemies) element.render(graphicsContext);
         for (AbstractTower element:towers) element.render(graphicsContext);
         for (AbstractBullet element:bullets) element.render(graphicsContext);

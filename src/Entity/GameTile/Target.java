@@ -1,7 +1,15 @@
 package Entity.GameTile;
 
-public class Target extends Road{
-    public Target(double posX, double posY, int directionForEnemy) {
-        super(posX, posY, directionForEnemy);
+import Main.Assets;
+import States.GameState.GameField;
+
+public class Target extends AbstractTile{
+    public Target(double posX, double posY) {
+        super(posX, posY, Assets.target);
+    }
+
+    @Override
+    public void update(GameField field) {
+
     }
 }

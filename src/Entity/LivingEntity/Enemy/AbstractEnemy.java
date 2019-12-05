@@ -15,7 +15,7 @@ public abstract class AbstractEnemy extends AbstractLivingEntity {
     private AbstractTile nextRoad;
 
     public AbstractEnemy(double posX, double posY, Image texture, int hitPoints, double speed, int armor, int reward) {
-        super(posX, posY, 1, 1, texture);
+        super(posX, posY, texture);
         this.hitPoints = hitPoints;
         this.armor = armor;
         this.reward = reward;
@@ -40,10 +40,22 @@ public abstract class AbstractEnemy extends AbstractLivingEntity {
         int currentRow = (int)(posY / Config.TILE_SIZE);
 
         if (getDistance(tiles[currentRow][currentColumn]) == 0) {
-            if (tiles[currentRow][currentColumn].getDirectionForEnemy() == 1) nextRoad = tiles[currentRow - 1][currentColumn];
-            else if (tiles[currentRow][currentColumn].getDirectionForEnemy() == 2) nextRoad = tiles[currentRow][currentColumn + 1];
-            else if (tiles[currentRow][currentColumn].getDirectionForEnemy() == 3) nextRoad = tiles[currentRow + 1][currentColumn];
-            else if (tiles[currentRow][currentColumn].getDirectionForEnemy() == 4) nextRoad = tiles[currentRow][currentColumn - 1];
+            if (tiles[currentRow][currentColumn].getDirectionForEnemy() == 1) {
+                textureAngle = -90;
+                nextRoad = tiles[currentRow - 1][currentColumn];
+            }
+            else if (tiles[currentRow][currentColumn].getDirectionForEnemy() == 2) {
+                textureAngle = 0;
+                nextRoad = tiles[currentRow][currentColumn + 1];
+            }
+            else if (tiles[currentRow][currentColumn].getDirectionForEnemy() == 3) {
+                textureAngle = 90;
+                nextRoad = tiles[currentRow + 1][currentColumn];
+            }
+            else if (tiles[currentRow][currentColumn].getDirectionForEnemy() == 4) {
+                textureAngle = 180;
+                nextRoad = tiles[currentRow][currentColumn - 1];
+            }
         }
         move(nextRoad);
 

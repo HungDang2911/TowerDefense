@@ -16,7 +16,7 @@ public abstract class AbstractBullet extends AbstractLivingEntity{
 
 
     protected AbstractBullet(double posX, double posY, Image texture, int damage, double speed, double x, double y) {
-        super(posX, posY, 1, 1, texture);
+        super(posX, posY, texture);
         this.damage = damage;
         this.speed = speed;
         {
@@ -24,6 +24,14 @@ public abstract class AbstractBullet extends AbstractLivingEntity{
             deltaX = (x - posX) * speed / distance;
             deltaY = (y - posY) * speed / distance;
         }
+    }
+
+    protected void changeAngle() {
+        double angle = Math.toDegrees(Math.atan((deltaX) / (deltaY)));
+        if (deltaX > 0 && deltaY > 0) textureAngle = 180 - angle; //R
+        if (deltaX > 0 && deltaY < 0) textureAngle = -angle;
+        if (deltaX < 0 && deltaY > 0) textureAngle = 180 - angle; //R
+        if (deltaX < 0 && deltaY < 0) textureAngle = -angle;
     }
 
     public int getDamage() {
@@ -36,6 +44,7 @@ public abstract class AbstractBullet extends AbstractLivingEntity{
             this.destroyed = true;
         }
         else {
+            changeAngle();
             this.posX += deltaX;
             this.posY += deltaY;
             if (this.posX > Config.GAME_FIELD_HORIZONTAL_LENGTH || this.posX < 0 || this.posY > Config.GAME_FIELD_VERTICAL_LENGTH || this.posY < 0) this.destroyed = true;
@@ -43,7 +52,7 @@ public abstract class AbstractBullet extends AbstractLivingEntity{
 
     }
 
-    public boolean isHit(List<AbstractEnemy> enemies) {
+    private boolean isHit(List<AbstractEnemy> enemies) {
         double minDistance = 999999D;
         for (AbstractEnemy enemy:enemies) {
             if (getDistance(enemy) >= (double)Config.TILE_SIZE * 32/64 || getDistance(enemy) > minDistance) continue;

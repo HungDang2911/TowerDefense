@@ -2,6 +2,7 @@ package Entity.GameTile;
 
 import Entity.LivingEntity.Tower.AbstractTower;
 import Main.Assets;
+import States.GameState.GameField;
 
 public class Mountain extends AbstractTile{
     private boolean isContainingTower;
@@ -25,5 +26,11 @@ public class Mountain extends AbstractTile{
 
     public AbstractTower getTower() {
         return tower;
+    }
+
+
+    @Override
+    public void update(GameField field) {
+
     }
 }

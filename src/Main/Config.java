@@ -7,7 +7,8 @@ public class Config {
     public static final int GAME_FIELD_VERTICAL_LENGTH = 960;
     public static final int MAIN_MENU_HORIZONTAL_LENGTH = 1280;
     public static final int MAIN_MENU_VERTICAL_LENGTH = 640;
-    public static final int NUM_OF_WAVES = 10;
+    public static final int NUM_OF_WAVES = 5;
+    public static final int SPAWN_INTERVAL = 60;
 
 
     /** ***************************TOWERS***************************** **/

@@ -41,7 +41,7 @@ public class TowerModifier extends InteractBar {
         upgradeTowerBtn.setOnMouseExited(e -> root.getChildren().remove(towerRange));
         upgradeTowerBtn.setOnAction(e -> {
             root.getChildren().remove(towerRange);
-            if (Player.getMoney() > mountain.getTower().getNextLevelPrice()) {
+            if (Player.getMoney() >= mountain.getTower().getNextLevelPrice()) {
                 Player.decreaseMoney(mountain.getTower().getNextLevelPrice());
                 mountain.getTower().upgrade();
                 root.getChildren().remove(this);
