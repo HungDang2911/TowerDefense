@@ -33,6 +33,7 @@ public class Information extends StackPane {
     private void init() {
         this.getStylesheets().add("file:src/States/GameState/Information.css");
         this.setAlignment(Pos.TOP_LEFT);
+        this.setMaxSize(300,100);
         field.getStackPane().getChildren().add(this);
         initImageView();
         initText();

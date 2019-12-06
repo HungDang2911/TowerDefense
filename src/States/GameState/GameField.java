@@ -49,11 +49,12 @@ public class GameField extends State{
         this.info = new Information(this);
         this.changingWave = true;
 
+        initMouseEventHandlers();
+
         //FOR DEBUGS
 //        this.towers.add(new MachineGunTower(Config.TILE_SIZE * 5, Config.TILE_SIZE * 5));
         this.enemies.add(new FastEnemy(Config.TILE_SIZE * 2, Config.TILE_SIZE * 14));
     }
-
 
     //SETTER AND GETTERS
     public void setChangingWave(boolean changingWave) {
@@ -118,6 +119,22 @@ public class GameField extends State{
         stackPane.getChildren().add(nextWaveBtn);
     }
 
+    private void initMouseEventHandlers() {
+        canvas.setOnMouseClicked(event -> {
+            int column = (int)event.getSceneX() / Config.TILE_SIZE;
+            int row = (int)event.getSceneY() / Config.TILE_SIZE;
+            if (tiles[row][column] instanceof Mountain && !openingShop && !openingTowerModifier) {
+                Mountain clickedMountain = (Mountain)tiles[row][column];
+                if (!clickedMountain.isContainingTower()) openShop(column * Config.TILE_SIZE, row * Config.TILE_SIZE, clickedMountain);
+                else openTowerModifier(column * Config.TILE_SIZE, row * Config.TILE_SIZE, clickedMountain);
+            }
+            else {
+                closeShop();
+                closeTowerModifier();
+            }
+        });
+    }
+
     //UPDATE AND RENDERS
     public void win() {}
 
@@ -133,36 +150,6 @@ public class GameField extends State{
         for (AbstractBullet element:bullets) element.update(enemies);
         for (AbstractEnemy element:enemies) element.update(tiles);
         for (AbstractTower element:towers) element.update(enemies, bullets);
-    }
-
-    private void updateMouseEvents() {
-//        stackPane.setOnMouseClicked(event -> {
-//            int column = (int)event.getSceneX() / Config.TILE_SIZE;
-//            int row = (int)event.getSceneY() / Config.TILE_SIZE;
-//            if (tiles[row][column] instanceof Mountain && !openingShop && !openingTowerModifier) {
-//                Mountain clickedMountain = (Mountain)tiles[row][column];
-//                if (!clickedMountain.isContainingTower()) openShop(column * Config.TILE_SIZE, row * Config.TILE_SIZE, clickedMountain);
-//                else openTowerModifier(column * Config.TILE_SIZE, row * Config.TILE_SIZE, clickedMountain);
-//            }
-//            else {
-//                closeShop();
-//                closeTowerModifier();
-//            }
-//        });
-
-        stackPane.addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
-            int column = (int)event.getSceneX() / Config.TILE_SIZE;
-            int row = (int)event.getSceneY() / Config.TILE_SIZE;
-            if (tiles[row][column] instanceof Mountain && !openingShop && !openingTowerModifier) {
-                Mountain clickedMountain = (Mountain)tiles[row][column];
-                if (!clickedMountain.isContainingTower()) openShop(column * Config.TILE_SIZE, row * Config.TILE_SIZE, clickedMountain);
-                else openTowerModifier(column * Config.TILE_SIZE, row * Config.TILE_SIZE, clickedMountain);
-            }
-            else {
-                closeShop();
-                closeTowerModifier();
-            }
-        });
     }
 
     private void updateInfo() {
@@ -192,7 +179,6 @@ public class GameField extends State{
 
     public void update() {
         if (isQuit()) states.pop();
-        updateMouseEvents();
         updateEntities();
         updateInfo();
     }
