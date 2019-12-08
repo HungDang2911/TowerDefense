@@ -37,6 +37,7 @@ public class GameStage {
                     if (value == 0) tiles[y][x] = new Mountain(x * Config.TILE_SIZE, y * Config.TILE_SIZE);
                     if (value == 1 || value == 2 || value == 3 || value == 4) tiles[y][x] = new Road(x * Config.TILE_SIZE, y * Config.TILE_SIZE, value);
                     if (value == 5) tiles[y][x] = new Target(x * Config.TILE_SIZE, y * Config.TILE_SIZE);
+                    if (value == 9) tiles[y][x] = new Grass(x * Config.TILE_SIZE, y * Config.TILE_SIZE);
                 }
             }
 

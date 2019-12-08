@@ -3,6 +3,10 @@
     -fx-background-size: cover;
 }
 
+#auto-play-btn {
+    -fx-background-image: url("../../../resource/Button/GameField/AutoPlay.png");
+}
+
 #next-wave-btn {
     -fx-background-image: url("../../../resource/Button/GameField/NextWave.png");
 }

@@ -6,8 +6,12 @@ import Entity.GameTile.Spawner;
 import Entity.LivingEntity.Bullet.AbstractBullet;
 import Entity.LivingEntity.Enemy.AbstractEnemy;
 import Entity.LivingEntity.Tower.AbstractTower;
+import Main.AutoPlay;
 import Main.Config;
+import Main.Player;
+import States.LoseState;
 import States.State;
+import States.WinState;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
@@ -31,12 +35,14 @@ public class GameField extends State{
     //BUTTONS
     private Button nextWaveBtn;
     private Button settingsBtn;
+    private Button autoPlayBtn;
 
     //OTHERS
     private boolean openingShop;
     private Shop shop;
     private boolean openingTowerModifier;
     private TowerModifier towerModifier;
+    private boolean autoPlaying;
 
     private Information info;
 
@@ -47,6 +53,7 @@ public class GameField extends State{
         this.openingTowerModifier = false;
         this.info = new Information(this);
         this.changingWave = true;
+        this.autoPlaying = false;
 
         initWaves();
         initMouseEventHandlers();
@@ -68,6 +75,10 @@ public class GameField extends State{
 
     public boolean isChangingWave() {
         return changingWave;
+    }
+
+    public AbstractTile[][] getTiles() {
+        return tiles;
     }
 
     public List<AbstractEnemy> getEnemies() {
@@ -114,7 +125,26 @@ public class GameField extends State{
     @Override
     protected void initButtons() {
         initNextWaveBtn();
-        initSettingsButton();
+        initSettingsBtn();
+        initAutoPlayBtn();
+    }
+
+    private void initAutoPlayBtn() {
+        autoPlayBtn = new Button("AutoPlay: Off");
+        autoPlayBtn.setId("auto-play-btn");
+        autoPlayBtn.setMinSize(126,57);
+        autoPlayBtn.setTranslateX( Config.GAME_FIELD_HORIZONTAL_LENGTH - 380);
+        autoPlayBtn.setOnAction(e -> {
+            if (autoPlaying) {
+                autoPlaying = false;
+                autoPlayBtn.setText("AutoPlay: Off");
+            }
+            else {
+                autoPlaying = true;
+                autoPlayBtn.setText("AutoPlay: On");
+            }
+        });
+        stackPane.getChildren().add(autoPlayBtn);
     }
 
     private void initNextWaveBtn() {
@@ -130,7 +160,7 @@ public class GameField extends State{
         stackPane.getChildren().add(nextWaveBtn);
     }
 
-    private void initSettingsButton() {
+    private void initSettingsBtn() {
         settingsBtn = new Button();
         settingsBtn.setId("settings-btn");
         settingsBtn.setMinSize(60,60);
@@ -158,12 +188,24 @@ public class GameField extends State{
     }
 
     //UPDATE AND RENDERS
-    public void win() {}
+    public void win() {
+        states.pop();
+        states.push(new WinState(states));
+    }
+
+    public void lose() {
+        states.pop();
+        states.push(new LoseState(states));
+    }
 
     private void updateEntities() {
+        if (Player.getLives() <= 0) lose();
+
         enemies.removeIf(element -> element.isDestroyed());
         bullets.removeIf(element -> element.isDestroyed());
         towers.removeIf(element -> element.isDestroyed());
+
+        if (autoPlaying) AutoPlay.update(this);
 
         for (AbstractTile[] tile : tiles)
             for (int j = 0; j < tiles[0].length; j++)
