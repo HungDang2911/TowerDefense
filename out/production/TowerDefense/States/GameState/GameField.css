@@ -1,5 +1,12 @@
-#next-wave-btn {
+.button {
     -fx-background-color: Transparent;
     -fx-background-size: cover;
+}
+
+#next-wave-btn {
     -fx-background-image: url("../../../resource/Button/GameField/NextWave.png");
+}
+
+#settings-btn {
+    -fx-background-image: url("../../../resource/Button/GameField/Settings.png");
 }

@@ -24,10 +24,10 @@ public class Shop extends InteractBar {
 
     @Override
     protected void initSize() {
-        this.setMinWidth(147);
-        this.setMaxWidth(147);
-        this.setMinHeight(42);
-        this.setMaxHeight(42);
+        this.setMinWidth(199);
+        this.setMaxWidth(199);
+        this.setMinHeight(55);
+        this.setMaxHeight(55);
         this.setHgap(3);
     }
 
@@ -42,7 +42,7 @@ public class Shop extends InteractBar {
     private void initAirTowerBtn() {
         airTowerBtn = new Button();
         airTowerBtn.setId("air-tower-btn");
-        airTowerBtn.setMinSize(32,32);
+        airTowerBtn.setMinSize(45,45);
         airTowerBtn.setOnMouseEntered(e -> showRange(posX + Config.TILE_SIZE / 2, posY + Config.TILE_SIZE / 2, Config.AIR_RANGE[1]));
         airTowerBtn.setOnMouseExited(e -> root.getChildren().remove(towerRange));
         airTowerBtn.setOnAction(e -> {
@@ -63,7 +63,7 @@ public class Shop extends InteractBar {
     private void initMissleTowerBtn() {
         missleTowerBtn = new Button();
         missleTowerBtn.setId("missle-tower-btn");
-        missleTowerBtn.setMinSize(32,32);
+        missleTowerBtn.setMinSize(45,45);
         missleTowerBtn.setOnMouseEntered(e -> showRange(posX + Config.TILE_SIZE / 2, posY + Config.TILE_SIZE / 2, Config.MISSLE_RANGE[1]));
         missleTowerBtn.setOnMouseExited(e -> root.getChildren().remove(towerRange));
         missleTowerBtn.setOnAction(e -> {
@@ -85,7 +85,7 @@ public class Shop extends InteractBar {
     private void initFreezeTowerBtn() {
         freezeTowerBtn = new Button();
         freezeTowerBtn.setId("freeze-tower-btn");
-        freezeTowerBtn.setMinSize(32,32);
+        freezeTowerBtn.setMinSize(45,45);
         freezeTowerBtn.setOnMouseEntered(e -> showRange(posX + Config.TILE_SIZE / 2, posY + Config.TILE_SIZE / 2, Config.FREEZE_RANGE[1]));
         freezeTowerBtn.setOnMouseExited(e -> root.getChildren().remove(towerRange));
         freezeTowerBtn.setOnAction(e -> {
@@ -106,7 +106,7 @@ public class Shop extends InteractBar {
     private void initMachineGunTowerBtn() {
         machineGunTowerBtn = new Button();
         machineGunTowerBtn.setId("machine-gun-tower-btn");
-        machineGunTowerBtn.setMinSize(32,32);
+        machineGunTowerBtn.setMinSize(45,45);
         machineGunTowerBtn.setOnMouseEntered(e -> showRange(posX + Config.TILE_SIZE / 2, posY + Config.TILE_SIZE / 2, Config.MACHINE_GUN_RANGE[1]));
         machineGunTowerBtn.setOnMouseExited(e -> root.getChildren().remove(towerRange));
         machineGunTowerBtn.setOnAction(e -> {

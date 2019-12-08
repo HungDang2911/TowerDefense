@@ -20,10 +20,10 @@ public class TowerModifier extends InteractBar {
     }
 
     protected void initSize() {
-        this.setMinWidth(157);
-        this.setMaxWidth(157);
-        this.setMinHeight(100);
-        this.setMaxHeight(100);
+        this.setMinWidth(103);
+        this.setMaxWidth(103);
+        this.setMinHeight(55);
+        this.setMaxHeight(55);
         this.setHgap(3);
     }
 
@@ -36,7 +36,7 @@ public class TowerModifier extends InteractBar {
     private void initUpgradeTowerButton() {
         upgradeTowerBtn = new Button();
         upgradeTowerBtn.setId("upgrade-tower-btn");
-        upgradeTowerBtn.setMinSize(32,32);
+        upgradeTowerBtn.setMinSize(45,45);
         upgradeTowerBtn.setOnMouseEntered(e -> showRange(posX + Config.TILE_SIZE / 2, posY + Config.TILE_SIZE / 2, mountain.getTower().getNextLevelRange()));
         upgradeTowerBtn.setOnMouseExited(e -> root.getChildren().remove(towerRange));
         upgradeTowerBtn.setOnAction(e -> {
@@ -54,7 +54,7 @@ public class TowerModifier extends InteractBar {
     private void initSellButton() {
         sellTowerBtn = new Button();
         sellTowerBtn.setId("sell-tower-btn");
-        sellTowerBtn.setMinSize(32,32);
+        sellTowerBtn.setMinSize(45,45);
         sellTowerBtn.setOnAction(e -> {
             Player.increaseMoney(mountain.getTower().getPrice() * 75/100);
             towers.remove(mountain.getTower());

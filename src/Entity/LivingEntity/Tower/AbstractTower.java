@@ -12,7 +12,6 @@ public abstract class AbstractTower extends AbstractLivingEntity{
     protected int attackSpeed;
     protected double range;
     protected int damage;
-    protected AbstractEnemy target;
     protected int ticks;
 
     protected AbstractTower(double posX, double posY, Image texture, int attackSpeed, double range, int damage) {
@@ -47,29 +46,28 @@ public abstract class AbstractTower extends AbstractLivingEntity{
     public void update(List<AbstractEnemy> enemies, List<AbstractBullet> bullets) {
         if (ticks++ < attackSpeed) return;
 
+
         //Choose target then shoot it
         if (enemies.isEmpty()) return;
-        if (this.target != null && getDistance(target) <= range) {
-            changeAngle(target.getPosX(), target.getPosY());
-            bullets.add(getBullet(posX, posY, target.getPosX(), target.getPosY()));
+
+        double minDistance = 9999999D;
+        AbstractEnemy closetEnemy = null;
+        for (AbstractEnemy enemy:enemies) {
+            if(getDistance(enemy) <= range && getDistance(enemy) < minDistance) {
+                closetEnemy = enemy;
+                minDistance = getDistance(enemy);
+            }
         }
-        else {
-            double minDistance = 9999999D;
-            AbstractEnemy closetEnemy = null;
-            for (AbstractEnemy enemy:enemies) {
-                if(getDistance(enemy) <= range && getDistance(enemy) < minDistance) {
-                    closetEnemy = enemy;
-                    minDistance = getDistance(enemy);
-                }
-            }
-            if (closetEnemy != null) {
-                this.target = closetEnemy;
-                changeAngle(target.getPosX(), target.getPosY());
-                bullets.add(getBullet(posX, posY, target.getPosX(), target.getPosY()));
-            }
+
+        if (closetEnemy != null) {
+            changeAngle(closetEnemy.getPosX(), closetEnemy.getPosY());
+            bullets.add(getBullet(posX, posY, closetEnemy.getPosX(), closetEnemy.getPosY()));
+            playShotSound();
         }
         ticks = 0;
     }
+
+    protected abstract void playShotSound();
 
     protected abstract AbstractBullet getBullet(double posX, double posY, double x, double y);
 

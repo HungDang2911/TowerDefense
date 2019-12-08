@@ -34,6 +34,11 @@ public class MachineGunTower extends AbstractTower{
     }
 
     @Override
+    protected void playShotSound() {
+        Assets.machineGunShot.play();
+    }
+
+    @Override
     public AbstractBullet getBullet(double posX, double posY, double x, double y) {
         return new MachineGunBullet(posX, posY, this.damage, x, y);
     }

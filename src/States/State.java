@@ -1,17 +1,17 @@
 package States;
 
-import Main.Config;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.FontSmoothingType;
 
+import javax.swing.text.html.ImageView;
 import java.util.Stack;
 
 public abstract class State {
     protected Stack<State> states;
+    protected ImageView background;
     protected Scene scene;
     protected StackPane stackPane;
     protected Canvas canvas;

@@ -34,6 +34,11 @@ public class MissleTower extends AbstractTower{
     }
 
     @Override
+    protected void playShotSound() {
+        Assets.missleShot.play();
+    }
+
+    @Override
     protected AbstractBullet getBullet(double posX, double posY, double x, double y) {
         return new MissleBullet(posX, posY, this.damage, x, y);
     }

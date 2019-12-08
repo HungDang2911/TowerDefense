@@ -34,6 +34,11 @@ public class AirTower extends AbstractTower{
     }
 
     @Override
+    protected void playShotSound() {
+        Assets.airShot.play();
+    }
+
+    @Override
     protected AbstractBullet getBullet(double posX, double posY, double x, double y) {
         return new AirBullet(posX, posY, this.damage, x, y);
     }

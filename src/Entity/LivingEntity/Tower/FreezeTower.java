@@ -34,6 +34,11 @@ public class FreezeTower extends AbstractTower{
     }
 
     @Override
+    protected void playShotSound() {
+        Assets.freezeShot.play();
+    }
+
+    @Override
     protected AbstractBullet getBullet(double posX, double posY, double x, double y) {
         return new FreezeBullet(posX, posY, this.damage, x, y);
     }

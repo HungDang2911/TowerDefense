@@ -5,13 +5,11 @@ import Entity.GameTile.Mountain;
 import Entity.GameTile.Spawner;
 import Entity.LivingEntity.Bullet.AbstractBullet;
 import Entity.LivingEntity.Enemy.AbstractEnemy;
-import Entity.LivingEntity.Enemy.FastEnemy;
 import Entity.LivingEntity.Tower.AbstractTower;
 import Main.Config;
 import States.State;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.FontSmoothingType;
 
@@ -32,6 +30,7 @@ public class GameField extends State{
 
     //BUTTONS
     private Button nextWaveBtn;
+    private Button settingsBtn;
 
     //OTHERS
     private boolean openingShop;
@@ -49,14 +48,20 @@ public class GameField extends State{
         this.info = new Information(this);
         this.changingWave = true;
 
+        initWaves();
         initMouseEventHandlers();
+    }
 
-        //FOR DEBUGS
-//        this.towers.add(new MachineGunTower(Config.TILE_SIZE * 5, Config.TILE_SIZE * 5));
-        this.enemies.add(new FastEnemy(Config.TILE_SIZE * 2, Config.TILE_SIZE * 14));
+    private void initWaves() {
+        this.changingWave = true;
+        currentWave = 0;
     }
 
     //SETTER AND GETTERS
+    public int getCurrentWave() {
+        return currentWave;
+    }
+
     public void setChangingWave(boolean changingWave) {
         this.changingWave = changingWave;
     }
@@ -85,6 +90,10 @@ public class GameField extends State{
         this.openingTowerModifier = openingTowerModifier;
     }
 
+    public void setNextWaveBtnVisible() {
+        this.nextWaveBtn.setVisible(true);
+    }
+
     //INITIALIZATION
     @Override
     protected void initStyleSheets() {
@@ -105,18 +114,31 @@ public class GameField extends State{
     @Override
     protected void initButtons() {
         initNextWaveBtn();
+        initSettingsButton();
     }
 
     private void initNextWaveBtn() {
         nextWaveBtn = new Button();
         nextWaveBtn.setId("next-wave-btn");
         nextWaveBtn.setMinSize(123,57);
-        nextWaveBtn.setTranslateX( Config.GAME_FIELD_HORIZONTAL_LENGTH - 150);
+        nextWaveBtn.setTranslateX( Config.GAME_FIELD_HORIZONTAL_LENGTH - 230);
         nextWaveBtn.setOnAction(e -> {
+            currentWave++;
             changingWave = false;
             nextWaveBtn.setVisible(false);
         });
         stackPane.getChildren().add(nextWaveBtn);
+    }
+
+    private void initSettingsButton() {
+        settingsBtn = new Button();
+        settingsBtn.setId("settings-btn");
+        settingsBtn.setMinSize(60,60);
+        settingsBtn.setTranslateX( Config.GAME_FIELD_HORIZONTAL_LENGTH - 80);
+        settingsBtn.setOnAction(e -> {
+
+        });
+        stackPane.getChildren().add(settingsBtn);
     }
 
     private void initMouseEventHandlers() {
@@ -153,7 +175,7 @@ public class GameField extends State{
     }
 
     private void updateInfo() {
-        info.update();
+        info.update(this);
     }
 
     private void openShop(double posX, double posY, Mountain clickedMountain) {

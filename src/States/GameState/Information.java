@@ -1,10 +1,9 @@
 package States.GameState;
 
 import Main.Assets;
+import Main.Config;
 import Main.Player;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
@@ -25,9 +24,10 @@ public class Information extends StackPane {
         init();
     }
 
-    public void update() {
+    public void update(GameField field) {
         lives.setText("" + Player.getLives());
         money.setText("" + Player.getMoney());
+        wave.setText("" + field.getCurrentWave() + "/" + Config.NUM_OF_WAVES);
     }
 
     private void init() {
@@ -58,5 +58,8 @@ public class Information extends StackPane {
         this.getChildren().add(money);
         money.setTranslateX(183);
         money.setTranslateY(10);
+        this.getChildren().add(wave);
+        wave.setTranslateX(57);
+        wave.setTranslateY(57);
     }
 }

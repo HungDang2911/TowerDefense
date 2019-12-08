@@ -15,6 +15,7 @@ public class Game extends AnimationTimer {
         Assets.init();
         this.window = window;
         states.push(new MainMenu(states));
+        Assets.music.play();
     }
 
 

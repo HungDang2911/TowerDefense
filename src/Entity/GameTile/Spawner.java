@@ -16,15 +16,29 @@ public class Spawner extends AbstractTile {
         super(posX, posY, Assets.spawner);
         this.directionForEnemy = directionForEnemy;
         this.allEnemies = allEnemies;
-        incomingWaveEnemies = this.allEnemies.peek();
     }
 
     public void update(GameField field) {
         if (field.isChangingWave()) {
-            incomingWaveEnemies = allEnemies.peek();
+            if (incomingWaveEnemies == null || incomingWaveEnemies.isEmpty()) {
+                incomingWaveEnemies = allEnemies.poll();
+            }
         }
         else {
-
+            if (incomingWaveEnemies.isEmpty()) {
+                if (field.getEnemies().isEmpty()) {
+                    if (allEnemies.isEmpty()) {
+                        field.win();
+                        return;
+                    }
+                    field.setChangingWave(true);
+                    field.setNextWaveBtnVisible();
+                }
+                return;
+            }
+            if(ticks++ < Config.SPAWN_INTERVAL) return;
+            field.getEnemies().add(incomingWaveEnemies.poll());
+            ticks = 0;
         }
     }
 }
