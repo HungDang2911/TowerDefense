@@ -32,7 +32,7 @@ public class Spawner extends AbstractTile {
                         return;
                     }
                     field.setChangingWave(true);
-                    field.setNextWaveBtnVisible();
+                    field.getNextWaveBtn().setVisible(true);
                 }
                 return;
             }

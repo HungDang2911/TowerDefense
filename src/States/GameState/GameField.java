@@ -6,6 +6,7 @@ import Entity.GameTile.Spawner;
 import Entity.LivingEntity.Bullet.AbstractBullet;
 import Entity.LivingEntity.Enemy.AbstractEnemy;
 import Entity.LivingEntity.Tower.AbstractTower;
+import Main.Assets;
 import Main.AutoPlay;
 import Main.Config;
 import Main.Player;
@@ -14,6 +15,7 @@ import States.State;
 import States.WinState;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.FontSmoothingType;
 
@@ -101,8 +103,8 @@ public class GameField extends State{
         this.openingTowerModifier = openingTowerModifier;
     }
 
-    public void setNextWaveBtnVisible() {
-        this.nextWaveBtn.setVisible(true);
+    public Button getNextWaveBtn() {
+        return nextWaveBtn;
     }
 
     //INITIALIZATION
@@ -112,7 +114,9 @@ public class GameField extends State{
     }
 
     @Override
-    protected void initBackground() { }
+    protected void initBackground() {
+        this.background = new ImageView(Assets.map1);
+    }
 
     @Override
     protected void initCanvas() {
@@ -120,6 +124,7 @@ public class GameField extends State{
         canvas.setFocusTraversable(true);
         graphicsContext = canvas.getGraphicsContext2D();
         graphicsContext.setFontSmoothingType(FontSmoothingType.LCD);
+        stackPane.getChildren().add(canvas);
     }
 
     @Override
@@ -248,9 +253,7 @@ public class GameField extends State{
     }
 
     public void render() {
-        for (AbstractTile[] tile : tiles)
-            for (int j = 0; j < tiles[0].length; j++)
-                tile[j].render(graphicsContext);
+        graphicsContext.clearRect(0,0, Config.GAME_FIELD_HORIZONTAL_LENGTH, Config.GAME_FIELD_VERTICAL_LENGTH);
         for (AbstractEnemy element:enemies) element.render(graphicsContext);
         for (AbstractTower element:towers) element.render(graphicsContext);
         for (AbstractBullet element:bullets) element.render(graphicsContext);

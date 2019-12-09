@@ -2,21 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3625c482-e472-499e-9338-de9b241e755a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Entity/GameTile/Grass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main/AutoPlay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/States/GameState/GameField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TowerDefense/States/GameState/GameField.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/States/GameState/GameField.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TowerDefense/States/GameState/GameField.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/States/LoseState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TowerDefense/States/LoseState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TowerDefense/States/WinState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TowerDefense/States/WinState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/Button/GameField/Settings.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/Button/GameField/Settings.png" beforeDir="false" afterPath="$PROJECT_DIR$/resource/Button/GameField/Settings.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/Map/demo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/resource/Map/demo.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/GameState/GameField.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/GameState/GameField.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/GameTile/Spawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GameTile/Spawner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Assets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Assets.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/AutoPlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/AutoPlay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/States/GameState/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/GameState/GameField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/GameState/GameStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/GameState/GameStage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/LoseState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/LoseState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/WinState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/WinState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/States/MenuState/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/MenuState/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/States/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/State.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

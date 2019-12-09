@@ -4,9 +4,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
-import javax.swing.text.html.ImageView;
 import java.util.Stack;
 
 public abstract class State {
@@ -22,8 +22,8 @@ public abstract class State {
         this.states = states;
 
         initBackground();
-        initCanvas();
         initStackPane();
+        initCanvas();
         initScene();
         initStyleSheets();
         initButtons();
@@ -41,7 +41,7 @@ public abstract class State {
 
 
     protected void initStackPane() {
-        stackPane = new StackPane(canvas);
+        stackPane = new StackPane(background);
         stackPane.setAlignment(Pos.TOP_LEFT);
     }
 

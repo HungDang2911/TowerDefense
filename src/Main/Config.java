@@ -15,7 +15,7 @@ public class Config {
 
     //MACHINE GUN TOWER
     public static final int MACHINE_GUN_ATTACK_SPEED = 60;
-    public static final int[] MACHINE_GUN_DAMAGE = {0, 20, 50, 120, 300, 700};
+    public static final int[] MACHINE_GUN_DAMAGE = {0, 30, 50, 120, 300, 700};
     public static final double[] MACHINE_GUN_RANGE = {0, TILE_SIZE * 3.5, TILE_SIZE * 3.6, TILE_SIZE * 3.7, TILE_SIZE * 3.8, TILE_SIZE * 3.9};
     public static final double MACHINE_GUN_BULLET_SPEED = 10;
     public static final int[] MACHINE_GUN_PRICE = {0, 20, 50, 120, 300, 700};

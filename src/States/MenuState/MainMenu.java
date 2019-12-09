@@ -7,15 +7,13 @@ import States.GameState.GameStage;
 import States.State;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.FontSmoothingType;
 
 import java.io.FileNotFoundException;
 import java.util.Stack;
 
 public class MainMenu extends State {
-    private Image background;
-
     private Button startButton;
     private Button creditsButton;
 
@@ -30,7 +28,7 @@ public class MainMenu extends State {
 
     @Override
     protected void initBackground() {
-        this.background = Assets.mainMenuBackground;
+        this.background = new ImageView(Assets.mainMenuBackground);
     }
 
     protected void initCanvas() {
@@ -38,6 +36,7 @@ public class MainMenu extends State {
         canvas.setFocusTraversable(true);
         graphicsContext = canvas.getGraphicsContext2D();
         graphicsContext.setFontSmoothingType(FontSmoothingType.LCD);
+        stackPane.getChildren().add(canvas);
     }
 
     @Override
@@ -73,7 +72,7 @@ public class MainMenu extends State {
 
     @Override
     public void render() {
-        graphicsContext.drawImage(background, 0 , 0);
+
     }
 
 }
