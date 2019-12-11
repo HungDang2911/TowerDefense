@@ -22,6 +22,21 @@ public abstract class AbstractEnemy extends AbstractLivingEntity {
         this.speed = speed;
     }
 
+    public int getHitPoints() {
+        return hitPoints;
+    }
+
+    public void setHitPoints(int hitPoints) {
+        this.hitPoints = hitPoints;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
 
     public void onHit(int damage) {
         this.hitPoints -= (damage - this.armor);

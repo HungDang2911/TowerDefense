@@ -5,13 +5,14 @@ import States.State;
 import javafx.animation.AnimationTimer;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Stack;
 
 public class Game extends AnimationTimer {
     Stage window;
     Stack<State> states = new Stack<>();
 
-    public Game(Stage window) {
+    public Game(Stage window) throws IOException {
         Assets.init();
         this.window = window;
         states.push(new MainMenu(states));
@@ -19,7 +20,7 @@ public class Game extends AnimationTimer {
     }
 
 
-    private void update() {
+    private void update() throws IOException {
         if (states.isEmpty()) this.stop();
         else {
             window.setScene(states.peek().getScene());
@@ -33,7 +34,11 @@ public class Game extends AnimationTimer {
 
     @Override
     public void handle(long l) {
-        update();
+        try {
+            update();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         render();
     }
 }

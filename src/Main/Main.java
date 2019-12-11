@@ -3,6 +3,8 @@ package Main;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 
 public class Main extends Application {
 
@@ -11,7 +13,7 @@ public class Main extends Application {
     }
     Stage window;
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException {
         window = primaryStage;
 
         Game game = new Game(window);

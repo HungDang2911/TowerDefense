@@ -63,6 +63,6 @@ public class Config {
     //BOSS ENEMY
     public static final int BOSS_ENEMY_HITPOINTS = 500;
     public static final double BOSS_ENEMY_SPEED = 0.2;
-    public static final int BOSS_ENEMY_ARMOR = 50;
+    public static final int BOSS_ENEMY_ARMOR = 20;
     public static final int BOSS_ENEMY_REWARD = 30;
 }

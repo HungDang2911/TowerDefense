@@ -14,7 +14,6 @@ public abstract class AbstractBullet extends AbstractLivingEntity{
     protected double deltaY;
     protected AbstractEnemy target;
 
-
     protected AbstractBullet(double posX, double posY, Image texture, int damage, double speed, double x, double y) {
         super(posX, posY, texture);
         this.damage = damage;
@@ -26,6 +25,26 @@ public abstract class AbstractBullet extends AbstractLivingEntity{
         }
     }
 
+    public int getDamage() {
+        return damage;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public double getDeltaX() {
+        return deltaX;
+    }
+
+    public double getDeltaY() {
+        return deltaY;
+    }
+
+    public AbstractEnemy getTarget() {
+        return target;
+    }
+
     protected void changeAngle() {
         double angle = Math.toDegrees(Math.atan((deltaX) / (deltaY)));
         if (deltaX > 0 && deltaY > 0) textureAngle = 180 - angle; //R
@@ -34,9 +53,6 @@ public abstract class AbstractBullet extends AbstractLivingEntity{
         if (deltaX < 0 && deltaY < 0) textureAngle = -angle;
     }
 
-    public int getDamage() {
-        return damage;
-    }
 
     public void update(List<AbstractEnemy> enemies) {
         if (isHit(enemies)) {

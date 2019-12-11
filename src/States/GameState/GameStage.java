@@ -7,6 +7,7 @@ import Main.Config;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Scanner;
 
@@ -45,11 +46,11 @@ public class GameStage {
             int spawnerCol = scanner.nextInt();
             int spawnerRow = scanner.nextInt();
 
-            Queue<Queue<AbstractEnemy>> allEnemies = new LinkedList<>();
+            List<List<AbstractEnemy>> allEnemies = new LinkedList<>();
 
             for (int i = 0; i < Config.NUM_OF_WAVES; i++) {
                 int numOfRoundEnemies = scanner.nextInt();
-                Queue<AbstractEnemy> roundEnemies = new LinkedList<>();
+                List<AbstractEnemy> roundEnemies = new LinkedList<>();
                 for (int j = 0; j < numOfRoundEnemies; j++) {
                     int value = scanner.nextInt();
                     if (value == 1) roundEnemies.add(new NormalEnemy(spawnerCol  * Config.TILE_SIZE, spawnerRow * Config.TILE_SIZE));

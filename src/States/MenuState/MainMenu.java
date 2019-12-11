@@ -2,6 +2,7 @@ package States.MenuState;
 
 import Main.Assets;
 import Main.Config;
+import Main.SaveGame;
 import States.GameState.GameField;
 import States.GameState.GameStage;
 import States.State;
@@ -11,13 +12,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.FontSmoothingType;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Stack;
 
 public class MainMenu extends State {
     private Button startButton;
     private Button creditsButton;
+    private Button loadButton;
 
-    public MainMenu(Stack<State> states) {
+    public MainMenu(Stack<State> states) throws IOException {
         super(states);
     }
 
@@ -42,7 +45,24 @@ public class MainMenu extends State {
     @Override
     protected void initButtons() {
         initStartButton();
+        initLoadButton();
         initCreditsButton();
+    }
+
+    private void initLoadButton() {
+        loadButton = new Button("Load");
+        loadButton.setOnAction(e -> {
+            try {
+                this.states.push(SaveGame.load(states));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+        loadButton.setMinWidth(250);
+        loadButton.setMinHeight(69);
+        loadButton.setTranslateX(200);
+        loadButton.setTranslateY(400);
+        stackPane.getChildren().add(loadButton);
     }
 
     private void initCreditsButton() {
@@ -55,11 +75,12 @@ public class MainMenu extends State {
                 states.push(new GameField(new GameStage("resource/Map/demo.txt"), states));
             } catch (FileNotFoundException ex) {
                 ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
         });
         startButton.setMinWidth(250);
         startButton.setMinHeight(69);
-        startButton.setId("start-btn");
         startButton.setTranslateX(200);
         startButton.setTranslateY(320);
         stackPane.getChildren().add(startButton);

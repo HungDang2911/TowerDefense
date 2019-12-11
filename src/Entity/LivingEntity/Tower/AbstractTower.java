@@ -27,11 +27,47 @@ public abstract class AbstractTower extends AbstractLivingEntity{
         return level;
     }
 
+    public int getAttackSpeed() {
+        return attackSpeed;
+    }
+
+    public double getRange() {
+        return range;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public int getTicks() {
+        return ticks;
+    }
+
     public abstract int getPrice();
 
     public abstract int getNextLevelPrice();
 
     public abstract double getNextLevelRange();
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public void setAttackSpeed(int attackSpeed) {
+        this.attackSpeed = attackSpeed;
+    }
+
+    public void setRange(double range) {
+        this.range = range;
+    }
+
+    public void setTicks(int ticks) {
+        this.ticks = ticks;
+    }
 
     protected void changeAngle(double x, double y) {
         double angle = Math.toDegrees(Math.atan((x - posX) / (y - posY)));

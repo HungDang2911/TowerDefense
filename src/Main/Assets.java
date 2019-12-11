@@ -4,9 +4,8 @@ import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
 
 public class Assets {
-    public static Image mainMenuBackground, map1;
+    public static Image mainMenuBackground, winBackground, loseBackground, settingsBackground, map1;
     public static Image livesIcon, moneyIcon, waveIcon;
-    public static Image mountain, road, target, spawner;
     public static Image machineGunTower, machineGunTowerLv3, airTower, freezeTower, missleTower, missleTowerLv3;
     public static Image normalEnemy, fastEnemy, tankerEnemy, bossEnemy;
     public static Image machineGunBullet, freezeBullet, airBullet, missleBullet;
@@ -14,18 +13,15 @@ public class Assets {
     public static void init() {
         //Backgrounds
         mainMenuBackground = new Image("file:resource/Background/MainMenuBackground.png", Config.MAIN_MENU_HORIZONTAL_LENGTH, Config.MAIN_MENU_VERTICAL_LENGTH, true, true);
+        winBackground = new Image("file:resource/Background/WinBackground.png", Config.MAIN_MENU_HORIZONTAL_LENGTH, Config.MAIN_MENU_VERTICAL_LENGTH, true, true);
+        loseBackground = new Image("file:resource/Background/LoseBackground.png", Config.MAIN_MENU_HORIZONTAL_LENGTH, Config.MAIN_MENU_VERTICAL_LENGTH, true, true);
+        settingsBackground = new Image("file:resource/Background/SettingsBackground.png", Config.MAIN_MENU_HORIZONTAL_LENGTH, Config.MAIN_MENU_VERTICAL_LENGTH, true, true);
         map1 = new Image("file:resource/Map/demo.png", Config.GAME_FIELD_HORIZONTAL_LENGTH, Config.GAME_FIELD_VERTICAL_LENGTH, true, true);
 
         //Icons
         livesIcon = new Image("file:resource/Icon/livesIcon.png", 96, 96, true, true);
         moneyIcon = new Image("file:resource/Icon/moneyIcon.png", 96, 96,true, true);
         waveIcon = new Image("file:resource/Icon/waveIcon.png", 96, 96, true, true);
-
-        //Tiles
-        mountain = new Image("file:resource/textures/Tiles/Mountain.png", Config.TILE_SIZE, Config.TILE_SIZE, true, true);
-        road = new Image("file:resource/textures/Tiles/Road.png", Config.TILE_SIZE, Config.TILE_SIZE, true, true);
-        target = new Image("file:resource/textures/Tiles/Target.png", Config.TILE_SIZE, Config.TILE_SIZE, true, true);
-        spawner = new Image("file:resource/textures/Tiles/Spawner.png", Config.TILE_SIZE, Config.TILE_SIZE, true, true);
 
         //Towers
         machineGunTower = new Image("file:resource/textures/Tower/MachineGunTower.png", Config.TILE_SIZE, Config.TILE_SIZE, true, true);

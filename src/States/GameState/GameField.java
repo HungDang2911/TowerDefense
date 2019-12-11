@@ -6,11 +6,9 @@ import Entity.GameTile.Spawner;
 import Entity.LivingEntity.Bullet.AbstractBullet;
 import Entity.LivingEntity.Enemy.AbstractEnemy;
 import Entity.LivingEntity.Tower.AbstractTower;
-import Main.Assets;
-import Main.AutoPlay;
-import Main.Config;
-import Main.Player;
+import Main.*;
 import States.LoseState;
+import States.SettingsState;
 import States.State;
 import States.WinState;
 import javafx.scene.canvas.Canvas;
@@ -19,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.FontSmoothingType;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -48,7 +47,18 @@ public class GameField extends State{
 
     private Information info;
 
-    public GameField(GameStage gameStage, Stack<State> states) {
+    public GameField(Stack<State> states) throws IOException {
+        super(states);
+        this.autoPlaying = false;
+        this.openingShop = false;
+        this.openingTowerModifier = false;
+        this.info = new Information(this);
+        autoPlaying = false;
+
+        initMouseEventHandlers();
+    }
+
+    public GameField(GameStage gameStage, Stack<State> states) throws IOException {
         super(states);
         this.tiles = gameStage.getTiles();
         this.openingShop = false;
@@ -67,44 +77,130 @@ public class GameField extends State{
     }
 
     //SETTER AND GETTERS
+
+
     public int getCurrentWave() {
         return currentWave;
     }
 
-    public void setChangingWave(boolean changingWave) {
-        this.changingWave = changingWave;
+    public void setCurrentWave(int currentWave) {
+        this.currentWave = currentWave;
     }
 
     public boolean isChangingWave() {
         return changingWave;
     }
 
+    public void setChangingWave(boolean changingWave) {
+        this.changingWave = changingWave;
+    }
+
     public AbstractTile[][] getTiles() {
         return tiles;
+    }
+
+    public void setTiles(AbstractTile[][] tiles) {
+        this.tiles = tiles;
     }
 
     public List<AbstractEnemy> getEnemies() {
         return enemies;
     }
 
-    public StackPane getStackPane() {
-        return this.stackPane;
+    public void setEnemies(List<AbstractEnemy> enemies) {
+        this.enemies = enemies;
     }
 
     public List<AbstractTower> getTowers() {
         return towers;
     }
 
+    public void setTowers(List<AbstractTower> towers) {
+        this.towers = towers;
+    }
+
+    public List<AbstractBullet> getBullets() {
+        return bullets;
+    }
+
+    public void setBullets(List<AbstractBullet> bullets) {
+        this.bullets = bullets;
+    }
+
+    public Button getNextWaveBtn() {
+        return nextWaveBtn;
+    }
+
+    public void setNextWaveBtn(Button nextWaveBtn) {
+        this.nextWaveBtn = nextWaveBtn;
+    }
+
+    public Button getSettingsBtn() {
+        return settingsBtn;
+    }
+
+    public void setSettingsBtn(Button settingsBtn) {
+        this.settingsBtn = settingsBtn;
+    }
+
+    public Button getAutoPlayBtn() {
+        return autoPlayBtn;
+    }
+
+    public void setAutoPlayBtn(Button autoPlayBtn) {
+        this.autoPlayBtn = autoPlayBtn;
+    }
+
+    public boolean isOpeningShop() {
+        return openingShop;
+    }
+
     public void setOpeningShop(boolean openingShop) {
         this.openingShop = openingShop;
+    }
+
+    public Shop getShop() {
+        return shop;
+    }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
+    }
+
+    public boolean isOpeningTowerModifier() {
+        return openingTowerModifier;
     }
 
     public void setOpeningTowerModifier(boolean openingTowerModifier) {
         this.openingTowerModifier = openingTowerModifier;
     }
 
-    public Button getNextWaveBtn() {
-        return nextWaveBtn;
+    public TowerModifier getTowerModifier() {
+        return towerModifier;
+    }
+
+    public void setTowerModifier(TowerModifier towerModifier) {
+        this.towerModifier = towerModifier;
+    }
+
+    public boolean isAutoPlaying() {
+        return autoPlaying;
+    }
+
+    public void setAutoPlaying(boolean autoPlaying) {
+        this.autoPlaying = autoPlaying;
+    }
+
+    public Information getInfo() {
+        return info;
+    }
+
+    public void setInfo(Information info) {
+        this.info = info;
+    }
+
+    public StackPane getStackPane() {
+        return this.stackPane;
     }
 
     //INITIALIZATION
@@ -171,7 +267,11 @@ public class GameField extends State{
         settingsBtn.setMinSize(60,60);
         settingsBtn.setTranslateX( Config.GAME_FIELD_HORIZONTAL_LENGTH - 80);
         settingsBtn.setOnAction(e -> {
-
+            try {
+                this.states.push(new SettingsState(states));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         });
         stackPane.getChildren().add(settingsBtn);
     }
@@ -193,17 +293,17 @@ public class GameField extends State{
     }
 
     //UPDATE AND RENDERS
-    public void win() {
+    public void win() throws IOException {
         states.pop();
         states.push(new WinState(states));
     }
 
-    public void lose() {
+    public void lose() throws IOException {
         states.pop();
         states.push(new LoseState(states));
     }
 
-    private void updateEntities() {
+    private void updateEntities() throws IOException {
         if (Player.getLives() <= 0) lose();
 
         enemies.removeIf(element -> element.isDestroyed());
@@ -246,7 +346,7 @@ public class GameField extends State{
     }
 
 
-    public void update() {
+    public void update() throws IOException {
         if (isQuit()) states.pop();
         updateEntities();
         updateInfo();

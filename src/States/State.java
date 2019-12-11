@@ -7,6 +7,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
+import java.io.IOException;
 import java.util.Stack;
 
 public abstract class State {
@@ -18,7 +19,7 @@ public abstract class State {
     protected GraphicsContext graphicsContext;
     protected boolean quit;
 
-    protected State(Stack<State> states) {
+    protected State(Stack<State> states) throws IOException {
         this.states = states;
 
         initBackground();
@@ -49,12 +50,12 @@ public abstract class State {
         scene = new Scene(stackPane);
     }
 
-    protected abstract void initButtons();
+    protected abstract void initButtons() throws IOException;
 
     public boolean isQuit() {
         return quit;
     }
 
-    public abstract void update();
+    public abstract void update() throws IOException;
     public abstract void render();
 }

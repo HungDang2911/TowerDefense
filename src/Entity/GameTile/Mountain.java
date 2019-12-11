@@ -1,7 +1,6 @@
 package Entity.GameTile;
 
 import Entity.LivingEntity.Tower.AbstractTower;
-import Main.Assets;
 import States.GameState.GameField;
 
 public class Mountain extends AbstractTile{
@@ -9,7 +8,7 @@ public class Mountain extends AbstractTile{
     private AbstractTower tower;
 
     public Mountain(double posX, double posY) {
-        super(posX, posY, Assets.mountain);
+        super(posX, posY);
     }
 
     public boolean isContainingTower() {
