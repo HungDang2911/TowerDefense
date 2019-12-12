@@ -25,6 +25,9 @@ public class SaveGame {
 
         JsonObject result = new JsonObject();
 
+        result.addProperty("lives", Player.getLives());
+        result.addProperty("money", Player.getMoney());
+
         result.addProperty("changingWave", field.isChangingWave());
         result.addProperty("currentWave", field.getCurrentWave());
 
@@ -43,22 +46,24 @@ public class SaveGame {
 
         String JsonString = br.readLine();
 
-
-
         JSONObject fieldJson = new JSONObject(JsonString);
 
         GameField field = new GameField(states);
 
+        List<AbstractTower> towers = loadTowers(fieldJson.getJSONArray("Towers"));
+        List<AbstractBullet> bullets = loadBullets(fieldJson.getJSONArray("Bullets"));
+        AbstractTile[][] tiles = loadTiles(fieldJson.getJSONArray("Tiles"), field.getTowers());
+
+        Player.setLives(fieldJson.getInt("lives"));
+        Player.setMoney(fieldJson.getInt("money"));
         field.setCurrentWave(fieldJson.getInt("currentWave"));
         field.setChangingWave(fieldJson.getBoolean("changingWave"));
-        field.setTowers(loadTowers(fieldJson.getJSONArray("Towers")));
-        field.setBullets(loadBullets(fieldJson.getJSONArray("Bullets")));
-        field.setEnemies(loadEnemies(fieldJson.getJSONArray("Enemies")));
-        field.setTiles(loadTiles(fieldJson.getJSONArray("Tiles"), field.getTowers()));
+        field.setTowers(towers);
+        field.setTiles(tiles);
+        field.setBullets(bullets);
+        field.setEnemies(loadEnemies(fieldJson.getJSONArray("Enemies"), tiles));
 
         br.close();
-//        return loadEnemies(fieldJson.getJSONArray("Enemies"));
-//        return loadTowers(fieldJson.getJSONArray("Towers"));
 
         return field;
     }
@@ -68,7 +73,7 @@ public class SaveGame {
 
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 20; j++) {
-                JSONObject tileJson = tilesJson.getJSONObject(i*15 + j);
+                JSONObject tileJson = tilesJson.getJSONObject(i*20 + j);
 
                 String type = tileJson.getString("type");
                 if (type.equals("Grass")) tiles[i][j] = new Grass(j * Config.TILE_SIZE, i * Config.TILE_SIZE);
@@ -89,14 +94,14 @@ public class SaveGame {
                     tiles[i][j] = mountain;
                 }
                 if (type.equals("Spawner")) {
-                    List<AbstractEnemy> incomingWaveEnemies = loadEnemies(tileJson.getJSONArray("incomingWaveEnemies"));
+                    List<AbstractEnemy> incomingWaveEnemies = loadEnemies(tileJson.getJSONArray("incomingWaveEnemies"), null);
                     int directionForEnemy = tileJson.getInt("directionForEnemy");
 
                     JSONArray allEnemiesJson = tileJson.getJSONArray("allEnemies");
                     List<List<AbstractEnemy>> allEnemies = new ArrayList<>();
 
                     for (int idx = 0; i < allEnemiesJson.length(); i++) {
-                        List<AbstractEnemy> waveEnemies = loadEnemies(allEnemiesJson.getJSONArray(idx));
+                        List<AbstractEnemy> waveEnemies = loadEnemies(allEnemiesJson.getJSONArray(idx), null);
                         allEnemies.add(waveEnemies);
                     }
 
@@ -110,7 +115,7 @@ public class SaveGame {
         return tiles;
     }
 
-    private static List<AbstractEnemy> loadEnemies(JSONArray enemiesJson) {
+    private static List<AbstractEnemy> loadEnemies(JSONArray enemiesJson, AbstractTile[][] tiles) {
         List<AbstractEnemy> enemies = new ArrayList<>();
 
         for (int i = 0; i < enemiesJson.length(); i++) {
@@ -127,6 +132,17 @@ public class SaveGame {
             if (type.equals("NormalEnemy")) enemy = new NormalEnemy(PosX, PosY);
             if (type.equals("TankerEnemy")) enemy = new TankerEnemy(PosX, PosY);
             if (type.equals("FastEnemy")) enemy = new FastEnemy(PosX, PosY);
+            if (tiles != null) {
+                double nextRoadPosX = enemyJson.getDouble("nextRoadPosX");
+                double nextRoadPosY = enemyJson.getDouble("nextRoadPosY");
+                for (int j = 0; j < 15; j++) {
+                    for (int k = 0; k < 20; k++) {
+                        if (tiles[j][k].getPosX() == nextRoadPosX && tiles[j][k].getPosY() == nextRoadPosY) {
+                            enemy.setNextRoad(tiles[j][k]);
+                        }
+                    }
+                }
+            }
             enemy.setHitPoints(hitPoints);
             enemy.setSpeed(speed);
             enemies.add(enemy);
@@ -243,6 +259,10 @@ public class SaveGame {
             enemyJson.addProperty("PosY", enemy.getPosY());
             enemyJson.addProperty("hitPoints", enemy.getHitPoints());
             enemyJson.addProperty("speed", enemy.getSpeed());
+            if (enemy.getNextRoad() != null) {
+                enemyJson.addProperty("nextRoadPosX", enemy.getNextRoad().getPosX());
+                enemyJson.addProperty("nextRoadPosY", enemy.getNextRoad().getPosY());
+            }
             enemiesJson.add(enemyJson);
         }
         return enemiesJson;

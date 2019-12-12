@@ -3,6 +3,7 @@ package States.GameState;
 import Entity.GameTile.AbstractTile;
 import Entity.GameTile.Mountain;
 import Entity.GameTile.Spawner;
+import Entity.LivingEntity.AbstractLivingEntity;
 import Entity.LivingEntity.Bullet.AbstractBullet;
 import Entity.LivingEntity.Enemy.AbstractEnemy;
 import Entity.LivingEntity.Tower.AbstractTower;
@@ -131,75 +132,16 @@ public class GameField extends State{
         return nextWaveBtn;
     }
 
-    public void setNextWaveBtn(Button nextWaveBtn) {
-        this.nextWaveBtn = nextWaveBtn;
-    }
 
-    public Button getSettingsBtn() {
-        return settingsBtn;
-    }
-
-    public void setSettingsBtn(Button settingsBtn) {
-        this.settingsBtn = settingsBtn;
-    }
-
-    public Button getAutoPlayBtn() {
-        return autoPlayBtn;
-    }
-
-    public void setAutoPlayBtn(Button autoPlayBtn) {
-        this.autoPlayBtn = autoPlayBtn;
-    }
-
-    public boolean isOpeningShop() {
-        return openingShop;
-    }
-
-    public void setOpeningShop(boolean openingShop) {
+    void setOpeningShop(boolean openingShop) {
         this.openingShop = openingShop;
     }
 
-    public Shop getShop() {
-        return shop;
-    }
-
-    public void setShop(Shop shop) {
-        this.shop = shop;
-    }
-
-    public boolean isOpeningTowerModifier() {
-        return openingTowerModifier;
-    }
-
-    public void setOpeningTowerModifier(boolean openingTowerModifier) {
+    void setOpeningTowerModifier(boolean openingTowerModifier) {
         this.openingTowerModifier = openingTowerModifier;
     }
 
-    public TowerModifier getTowerModifier() {
-        return towerModifier;
-    }
-
-    public void setTowerModifier(TowerModifier towerModifier) {
-        this.towerModifier = towerModifier;
-    }
-
-    public boolean isAutoPlaying() {
-        return autoPlaying;
-    }
-
-    public void setAutoPlaying(boolean autoPlaying) {
-        this.autoPlaying = autoPlaying;
-    }
-
-    public Information getInfo() {
-        return info;
-    }
-
-    public void setInfo(Information info) {
-        this.info = info;
-    }
-
-    public StackPane getStackPane() {
+    StackPane getStackPane() {
         return this.stackPane;
     }
 
@@ -298,7 +240,7 @@ public class GameField extends State{
         states.push(new WinState(states));
     }
 
-    public void lose() throws IOException {
+    private void lose() throws IOException {
         states.pop();
         states.push(new LoseState(states));
     }
@@ -306,9 +248,9 @@ public class GameField extends State{
     private void updateEntities() throws IOException {
         if (Player.getLives() <= 0) lose();
 
-        enemies.removeIf(element -> element.isDestroyed());
-        bullets.removeIf(element -> element.isDestroyed());
-        towers.removeIf(element -> element.isDestroyed());
+        enemies.removeIf(AbstractLivingEntity::isDestroyed);
+        bullets.removeIf(AbstractLivingEntity::isDestroyed);
+        towers.removeIf(AbstractLivingEntity::isDestroyed);
 
         if (autoPlaying) AutoPlay.update(this);
 

@@ -12,14 +12,14 @@ public class Shop extends InteractBar {
     private Button airTowerBtn;
     private Button freezeTowerBtn;
 
-    public Shop(double posX, double posY, GameField field, Mountain mountain) {
+    Shop(double posX, double posY, GameField field, Mountain mountain) {
         super(posX, posY, field, mountain);
     }
 
     @Override
     protected void initPosition() {
-        this.setTranslateX(posX);
-        this.setTranslateY(posY);
+        this.setTranslateX(posX - 68);
+        this.setTranslateY(posY - Config.TILE_SIZE);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class Shop extends InteractBar {
         airTowerBtn = new Button();
         airTowerBtn.setId("air-tower-btn");
         airTowerBtn.setMinSize(45,45);
-        airTowerBtn.setOnMouseEntered(e -> showRange(posX + Config.TILE_SIZE / 2, posY + Config.TILE_SIZE / 2, Config.AIR_RANGE[1]));
+        airTowerBtn.setOnMouseEntered(e -> showRange(posX + Config.TILE_SIZE / 2.0, posY + Config.TILE_SIZE / 2.0, Config.AIR_RANGE[1]));
         airTowerBtn.setOnMouseExited(e -> root.getChildren().remove(towerRange));
         airTowerBtn.setOnAction(e -> {
             if (Player.getMoney() >= Config.AIR_PRICE[1]) {
@@ -64,7 +64,7 @@ public class Shop extends InteractBar {
         missleTowerBtn = new Button();
         missleTowerBtn.setId("missle-tower-btn");
         missleTowerBtn.setMinSize(45,45);
-        missleTowerBtn.setOnMouseEntered(e -> showRange(posX + Config.TILE_SIZE / 2, posY + Config.TILE_SIZE / 2, Config.MISSLE_RANGE[1]));
+        missleTowerBtn.setOnMouseEntered(e -> showRange(posX + Config.TILE_SIZE / 2.0, posY + Config.TILE_SIZE / 2.0, Config.MISSLE_RANGE[1]));
         missleTowerBtn.setOnMouseExited(e -> root.getChildren().remove(towerRange));
         missleTowerBtn.setOnAction(e -> {
             if (Player.getMoney() >= Config.MISSLE_PRICE[1]) {
@@ -86,7 +86,7 @@ public class Shop extends InteractBar {
         freezeTowerBtn = new Button();
         freezeTowerBtn.setId("freeze-tower-btn");
         freezeTowerBtn.setMinSize(45,45);
-        freezeTowerBtn.setOnMouseEntered(e -> showRange(posX + Config.TILE_SIZE / 2, posY + Config.TILE_SIZE / 2, Config.FREEZE_RANGE[1]));
+        freezeTowerBtn.setOnMouseEntered(e -> showRange(posX + Config.TILE_SIZE / 2.0, posY + Config.TILE_SIZE / 2.0, Config.FREEZE_RANGE[1]));
         freezeTowerBtn.setOnMouseExited(e -> root.getChildren().remove(towerRange));
         freezeTowerBtn.setOnAction(e -> {
             if (Player.getMoney() >= Config.FREEZE_PRICE[1]) {
@@ -107,7 +107,7 @@ public class Shop extends InteractBar {
         machineGunTowerBtn = new Button();
         machineGunTowerBtn.setId("machine-gun-tower-btn");
         machineGunTowerBtn.setMinSize(45,45);
-        machineGunTowerBtn.setOnMouseEntered(e -> showRange(posX + Config.TILE_SIZE / 2, posY + Config.TILE_SIZE / 2, Config.MACHINE_GUN_RANGE[1]));
+        machineGunTowerBtn.setOnMouseEntered(e -> showRange(posX + Config.TILE_SIZE / 2.0, posY + Config.TILE_SIZE / 2.0, Config.MACHINE_GUN_RANGE[1]));
         machineGunTowerBtn.setOnMouseExited(e -> root.getChildren().remove(towerRange));
         machineGunTowerBtn.setOnAction(e -> {
             if (Player.getMoney() >= Config.MACHINE_GUN_PRICE[1]) {

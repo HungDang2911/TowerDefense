@@ -24,7 +24,6 @@ public abstract class AbstractLivingEntity extends AbstractEntity{
     }
 
     protected <T extends AbstractEntity> double getDistance(T target) {
-        System.out.println(Math.sqrt((this.posX - target.getPosX()) * (this.posX - target.getPosX()) + (this.posY - target.getPosY()) * (this.posY - target.getPosY())));
         return Math.sqrt((this.posX - target.getPosX()) * (this.posX - target.getPosX()) + (this.posY - target.getPosY()) * (this.posY - target.getPosY()));
     }
 

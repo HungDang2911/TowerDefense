@@ -1,7 +1,5 @@
 package Main;
 
-import javafx.scene.canvas.GraphicsContext;
-
 public class Player {
 
     private static final int STARTING_LIVES = 30;
@@ -9,6 +7,22 @@ public class Player {
 
     private static int lives = 30;
     private static int money = 50;
+
+    public static int getLives() {
+        return lives;
+    }
+
+    public static void setLives(int lives) {
+        Player.lives = lives;
+    }
+
+    public static long getMoney() {
+        return money;
+    }
+
+    public static void setMoney(int money) {
+        Player.money = money;
+    }
 
     public static void reset() {
         money = STARTING_MONEY;
@@ -27,15 +41,5 @@ public class Player {
         money -= amount;
     }
 
-    public static int getLives() {
-        return lives;
-    }
 
-    public static long getMoney() {
-        return money;
-    }
-
-    public static void render(GraphicsContext graphicsContext) {
-
-    }
 }

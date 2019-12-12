@@ -38,6 +38,14 @@ public abstract class AbstractEnemy extends AbstractLivingEntity {
         this.speed = speed;
     }
 
+    public AbstractTile getNextRoad() {
+        return nextRoad;
+    }
+
+    public void setNextRoad(AbstractTile nextRoad) {
+        this.nextRoad = nextRoad;
+    }
+
     public void onHit(int damage) {
         this.hitPoints -= (damage - this.armor);
         if (this.hitPoints <= 0) {
@@ -72,6 +80,7 @@ public abstract class AbstractEnemy extends AbstractLivingEntity {
                 nextRoad = tiles[currentRow][currentColumn - 1];
             }
         }
+
         move(nextRoad);
 
         if (isOnTarget(tiles[(int)(posY / Config.TILE_SIZE)][(int)(posX / Config.TILE_SIZE)])) {

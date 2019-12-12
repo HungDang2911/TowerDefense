@@ -1,6 +1,7 @@
 package States;
 
 import Main.Assets;
+import Main.Config;
 import Main.SaveGame;
 import States.GameState.GameField;
 import javafx.scene.control.Button;
@@ -47,8 +48,8 @@ public class SettingsState extends State {
         });
         resumeBtn.setMinWidth(250);
         resumeBtn.setMinHeight(69);
-        resumeBtn.setTranslateX(200);
-        resumeBtn.setTranslateY(100);
+        resumeBtn.setTranslateX(Config.MAIN_MENU_HORIZONTAL_LENGTH / 2 - 125);
+        resumeBtn.setTranslateY(250);
         stackPane.getChildren().add(resumeBtn);
     }
 
@@ -64,8 +65,8 @@ public class SettingsState extends State {
         });
         saveBtn.setMinWidth(250);
         saveBtn.setMinHeight(69);
-        saveBtn.setTranslateX(200);
-        saveBtn.setTranslateY(200);
+        saveBtn.setTranslateX(Config.MAIN_MENU_HORIZONTAL_LENGTH / 2 - 125);
+        saveBtn.setTranslateY(350);
         stackPane.getChildren().add(saveBtn);
     }
 
@@ -77,8 +78,8 @@ public class SettingsState extends State {
         });
         backToMenuBtn.setMinWidth(250);
         backToMenuBtn.setMinHeight(69);
-        backToMenuBtn.setTranslateX(200);
-        backToMenuBtn.setTranslateY(320);
+        backToMenuBtn.setTranslateX(Config.MAIN_MENU_HORIZONTAL_LENGTH / 2 - 125);
+        backToMenuBtn.setTranslateY(450);
         stackPane.getChildren().add(backToMenuBtn);
     }
 

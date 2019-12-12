@@ -15,8 +15,8 @@ public class TowerModifier extends InteractBar {
     }
 
     protected void initPosition() {
-        this.setTranslateX(posX);
-        this.setTranslateY(posY);
+        this.setTranslateX(posX - 15);
+        this.setTranslateY(posY - Config.TILE_SIZE);
     }
 
     protected void initSize() {
@@ -37,7 +37,7 @@ public class TowerModifier extends InteractBar {
         upgradeTowerBtn = new Button();
         upgradeTowerBtn.setId("upgrade-tower-btn");
         upgradeTowerBtn.setMinSize(45,45);
-        upgradeTowerBtn.setOnMouseEntered(e -> showRange(posX + Config.TILE_SIZE / 2, posY + Config.TILE_SIZE / 2, mountain.getTower().getNextLevelRange()));
+        upgradeTowerBtn.setOnMouseEntered(e -> showRange(posX + Config.TILE_SIZE / 2.0, posY + Config.TILE_SIZE / 2.0, mountain.getTower().getNextLevelRange()));
         upgradeTowerBtn.setOnMouseExited(e -> root.getChildren().remove(towerRange));
         upgradeTowerBtn.setOnAction(e -> {
             root.getChildren().remove(towerRange);

@@ -2,6 +2,7 @@ package States.MenuState;
 
 import Main.Assets;
 import Main.Config;
+import Main.Player;
 import Main.SaveGame;
 import States.GameState.GameField;
 import States.GameState.GameStage;
@@ -71,6 +72,7 @@ public class MainMenu extends State {
     private void initStartButton() {
         startButton = new Button("Start");
         startButton.setOnAction(e -> {
+            Player.reset();
             try {
                 states.push(new GameField(new GameStage("resource/Map/demo.txt"), states));
             } catch (FileNotFoundException ex) {
